@@ -20,6 +20,7 @@ def synchronize_dataframes(reference_df, dfs):
         for col_index, col in enumerate(data.columns):
             if '_rot' in col:
                 if '_rot[0]' in col:
+                    # MoCap data is column-wise, so we need to transpose it to get the rotation matrix
                     rot_matrix = R.from_matrix(data_values[:, col_index:col_index+9].reshape(-1, 3, 3).transpose(0, 2, 1))
                     slerp_interp = Slerp(data_timestamps, rot_matrix)
                     interpolated_data[:, col_index:col_index+9] = slerp_interp(reference_timestamps).as_matrix().transpose(0, 2, 1).reshape(-1, 9)
@@ -44,13 +45,14 @@ def add_velocity_columns(df):
             linear_vx = calc_linear_velocity(row['drone_x'], df.at[index - 1, 'drone_x'], dt, drone_velocity_linear_x[-1])
             linear_vy = calc_linear_velocity(row['drone_y'], df.at[index - 1, 'drone_y'], dt, drone_velocity_linear_y[-1])
             linear_vz = calc_linear_velocity(row['drone_z'], df.at[index - 1, 'drone_z'], dt, drone_velocity_linear_z[-1])
+            # MoCap data is column-wise, so we need to transpose it to get the rotation matrix
             omega_x, omega_y, omega_z = calc_angular_velocity(
                         row[['drone_rot[0]', 'drone_rot[1]', 'drone_rot[2]',
                              'drone_rot[3]', 'drone_rot[4]', 'drone_rot[5]',
-                             'drone_rot[6]', 'drone_rot[7]', 'drone_rot[8]']].to_numpy().reshape(3, 3),
+                             'drone_rot[6]', 'drone_rot[7]', 'drone_rot[8]']].to_numpy().reshape(3, 3).transpose(0, 2, 1),
                         df.loc[index - 1, ['drone_rot[0]', 'drone_rot[1]', 'drone_rot[2]',
                                           'drone_rot[3]', 'drone_rot[4]', 'drone_rot[5]',
-                                          'drone_rot[6]', 'drone_rot[7]', 'drone_rot[8]']].to_numpy().reshape(3, 3),
+                                          'drone_rot[6]', 'drone_rot[7]', 'drone_rot[8]']].to_numpy().reshape(3, 3).transpose(0, 2, 1),
                         dt=dt)
 
             drone_velocity_angular_x.append(omega_x)
