@@ -49,10 +49,10 @@ def add_velocity_columns(df):
             omega_x, omega_y, omega_z = calc_angular_velocity(
                         row[['drone_rot[0]', 'drone_rot[1]', 'drone_rot[2]',
                              'drone_rot[3]', 'drone_rot[4]', 'drone_rot[5]',
-                             'drone_rot[6]', 'drone_rot[7]', 'drone_rot[8]']].to_numpy().reshape(3, 3).transpose(0, 2, 1),
+                             'drone_rot[6]', 'drone_rot[7]', 'drone_rot[8]']].to_numpy().reshape(3, 3).transpose(),
                         df.loc[index - 1, ['drone_rot[0]', 'drone_rot[1]', 'drone_rot[2]',
                                           'drone_rot[3]', 'drone_rot[4]', 'drone_rot[5]',
-                                          'drone_rot[6]', 'drone_rot[7]', 'drone_rot[8]']].to_numpy().reshape(3, 3).transpose(0, 2, 1),
+                                          'drone_rot[6]', 'drone_rot[7]', 'drone_rot[8]']].to_numpy().reshape(3, 3).transpose(),
                         dt=dt)
 
             drone_velocity_angular_x.append(omega_x)
@@ -100,8 +100,8 @@ def main():
 
     csv_dir = os.path.join(args.flight, "csv_raw")
     rosbag_dir = os.path.join(csv_dir, "ros2bag_dump")
-    csv_filenames = ['camera_', 'imu_', 'motors_thrust_', 'channels_', 'battery_', 'mocap_']
-    inside_ros_dir = [False, True, True, True, True, False]
+    csv_filenames = ['camera_', 'imu_', 'motors_thrust_', 'channels_', 'battery_', 'mocap_', 'gate_corners_']
+    inside_ros_dir = [False, True, True, True, True, False, False]
 
     dfs = []
     for i, filename in enumerate(csv_filenames):
@@ -110,7 +110,7 @@ def main():
         df = pd.read_csv(csv_path)
         dfs.append(df)
 
-    camera_df, imu_df, thrust_df, channels_df, battery_df, mocap_df = dfs
+    camera_df, imu_df, thrust_df, channels_df, battery_df, mocap_df, gate_corners_df = dfs
 
 #####################
 # Preprocessing
@@ -138,7 +138,7 @@ def main():
 
     if sync_option == "A":
         reference_df = camera_df
-        dfs_to_sync = [imu_df, thrust_df, channels_df, battery_df, mocap_df]
+        dfs_to_sync = [imu_df, thrust_df, channels_df, battery_df, mocap_df, gate_corners_df]
         final_csv_name += '_cam_ts_sync'
     elif sync_option == "B":
         frequency = float(input("Enter the desired frequency [hz]: "))
@@ -146,7 +146,7 @@ def main():
         last_timestamp = camera_df['timestamp'].iloc[-1]
         target_timestamps = np.arange(first_timestamp, last_timestamp, 1.0 / frequency * 1000000, dtype=np.ulonglong)
         reference_df = pd.DataFrame({'timestamp': target_timestamps})
-        dfs_to_sync = [imu_df, thrust_df, channels_df, battery_df, mocap_df]
+        dfs_to_sync = [imu_df, thrust_df, channels_df, battery_df, mocap_df, gate_corners_df]
         final_csv_name += "_" + str(frequency) + 'hz_freq_sync'
     else:
         print("Invalid sync option. Exiting.")
