@@ -1,0 +1,3 @@
+[submodule "drone-racing-msgs"]
+	path = drone-racing-msgs
+	url = https://github.com/Drone-Racing/drone-racing-msgs.git
