@@ -1,0 +1,119 @@
+# Bill of materials
+
+
+## 3D prints
+
+| **COMPONENT**                                  | **FILE TYPE** | **LINK** |
+| ---------------------------------------------- | ------------- | -------- |
+| Floss 3D                                       | Fusion f3d    |          |
+| BEC support                                    | STL           |          |
+| 6S Battery Holder (optional)                   | STL           |          |
+| NX Base                                        | STL           |          |
+| NX Top                                         | STL           |          |
+| NX Top 30°                                     | STL           |          |
+| NX Top 40°                                     | STL           |          |
+| Camera Fron Case                               | STL           |          |
+| Support Qualisys marker                        | STL           |          |
+| Support Qualisys marker with thread high pitch | STL           |          |
+| Support Qualisys marker with thread low pitch  | STL           |          |
+
+
+
+## Quadrotor electronics
+
+| **COMPONENT**     |  **NAME**                             | **LINK**                                                                                                                                                           | **Price (USD)** | **Price (AED)** | **QTY** | **Total (USD)** | **Total (AED)** |
+| ----------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------- | -------------- | ------- | -------------- | -------------- |
+| Motors            | Tmotor F60PROV 2020KV                 | [T-Motor](https://store.tmotor.com/goods-1217-F60PROV.html)                                                                                                        | 26.9           | 98.79          | 4       | 107.6          | 395.16         |
+| ESC               | Tmotor F55A PROⅡ 6S 4IN1              | [T-Motor](https://store.tmotor.com/goods-821-F55A_PRO_6S_4IN1_.html)                                                                                               | 93.9           | 344.85         | 1       | 93.9           | 344.85         |
+| Flight Controller | Holybro Kakute H7 V1.3                | [Holybro](https://holybro.com/collections/autopilot-flight-controllers/products/kakute-h7)                                                                         | 96.59          | 354.73         | 1       | 96.59          | 354.73         |
+| Receiver          | TBS CROSSFIRE NANO RX (SE) LONG RANGE | [TBS](https://www.team-blacksheep.com/products/prod:crossfire_nano_se)                                                                                             | 29.95          | 109.99         | 1       | 29.95          | 109.99         |
+
+
+
+## Autonomous module
+
+| **COMPONENT**       | **NAME**                                                                                          | **LINK**                                                | **Price (USD)** | **Price (AED)** | **QTY** | **Total (USD)** | **Total (AED)** |
+| ------------------- | ------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------- | -------------- | ------------ | -------------- | ------------ |
+| Nvidia NX Orin      | Jetson Orin NX 16GB Module 900-13767-0000-000                                                     | [Arrow](https://www.arrow.com/en/products/900-13767-0000-000/nvidia) | 579            | 2126.38        | 1       | 579            | 2126.38        |
+| Carrier Board       | Seed Studio A203 (Version 2) Carrier Board for Jetson                                             | [Seeedstudio](https://www.seeedstudio.com/A203-Carrier-Board-for-Jetson-Nano-Xavier-NX-V2-p-5214.html)                | 179                 | 657.38         | 1           | 179          | 657.38         |
+| Heatsink            | Seed Studio Aluminum Heatsink with Fan for Jetson Orin NX                                         | [Seeedstudio](https://www.seeedstudio.com/Aluminum-Heatsink-with-Fan-for-Jetson-Orin-NX-Orin-Nano-Xavier-NX-Module-p-5633.html) | 19.9      | 73.08          | 1       | 19.9         | 73.08          |
+| BEC                 | Matek BEC12S-PRO, 9-55V TO 5V/8V/12V-5A                                                           | [Mateksys](http://www.mateksys.com/?portfolio=bec12s-pro)                 | 21.99           | 80.76          | 1              | 21.99        | 80.76          |
+| SSD                 | Sabrent 1TB Rocket NVMe PCIe M.2 2242                                                             | [Sabrent](https://sabrent.com/products/sb-1342-1tb?_pos=3&_sid=722ff7792&_ss=r)    | 119.99         | 440.66         | 1              | 119.99       | 440.66         |
+| WiFi adapter card   | Wi-Fi 6E AX210NGW Wireless WiFi Card BT5.2 M.2                                                    | [Google](https://www.google.com/search?q=Wi-Fi+6E+AX210NGW+Wireless+WiFi+Card+BT5.2+M.2)  | 25.99   | 95.45          | 1              | 25.99        | 95.45          |
+| WiFi Antenna        | Wi-Fi 6E Flex Cabled Balanced Antenna 50.00mm Cable Length, Compatible with I-PEX MHF4 Connectors | [Molex](https://www.molex.com/molex/products/part-detail/antennas/1461531050)          | 2.57      | 9.44           | 1              | 2.57         | 9.44           |
+| Camera              | Arducam 8MP IMX219 Wide Angle Camera Module                                                       | [Arducam](https://www.arducam.com/product/b0179-arducam-imx219-wide-angle-camera-module-for-nvidia-jetson-nano/)    | 19.99     | 73.41          | 1             | 19.99        | 73.41          |
+
+
+
+## FPV system
+
+| **COMPONENT**     |  **NAME**                             | **LINK**                                                                                                                                                           | **Price (USD)** | **Price (AED)** | **QTY** | **Total (USD)** | **Total (AED)** |
+| ----------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------- | -------------- | ------- | -------------- | -------------- |
+| FPV Camera        | Foxeer T-Rex Mini 1500TVL             | [Foxeer](https://www.foxeer.com/foxeer-t-rex-mini-1500tvl-6ms-low-latency-super-wdr-fpv-camera-g-314)                                                              | 44.9           | 164.92         | 1       | 44.9           | 164.92         |
+| Goggles           | Fat Shark HDO2                        | [Fat Shark](https://pyrodrone.com/collections/fatshark-products/products/fatshark-dominator-hdo-2-oled-fpv-goggles)                                                | 499            | 1832.84         | 1      | 499            | 1832.84        |
+
+
+
+## Assembly elements
+
+| **COMPONENT**     | **NAME**                                                          | **LINK**                                                                                        | **Price (USD)** | **Price (AED)** | **QTY** | **Set PCS** | **PCS Used** | **Total (USD)** | **Total (AED)** |
+| ----------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------- | -------------- | ------- | ----------- | ------------ | -------------- | -------------- |
+| XT30 M+F          | XT30 Connectors Male and Female Connectors Plugs with heat shrink | [Amazon](https://www.amazon.com/Hobbypark-Bullet-Connectors-Female-Battery/dp/B07PN8WVGT) | 8.98           | 32.98          | 1       | 10          | 1            | 8.98           | 32.98          |
+| Cables            | 16AWG silicone cable                                              | [Google](https://www.google.com/search?q=16awg+cable+silicone)                                                       | 28             | 102.83         | 1       |             |              | 28             | 102.83         |
+| Jumpers           | Silicone jumpers arduino female                                   | [Google](https://www.google.com/search?q=silicone+jumpers+arduino)                                               | 9.95           | 36.54          | 1       |             |              | 9.95           | 36.54          |
+| Heat shrink tube  | Heat shrink tube 30mm                                             | [Google](https://www.google.com/search?q=heat+shrink+tube+30mm)                                                     | 6.49           | 23.83          | 1       |             |              | 6.49           | 23.83          |
+| Double sided tape | GORILLA HEAVY DUTY MOUNTING TAPE 1"X60"-Black                     | [Amazon](https://www.amazon.com/Gorilla-Double-Sided-Heavy-Mounting-Black/dp/B07PYG86FC)   | 11.74          | 43.12          | 1       |             |              | 11.74          | 43.12          |
+| Tape              | Electrical tape                                                   | [Google](https://www.google.com/search?q=electrical+tape)                                                                 | 4              | 14.69          | 1       |             |              | 4              | 14.69          |
+| Zipties           | 10 cm zipties                                                     | [Google](https://www.google.com/search?q=10+cm+zipties)                                                                     | 10             | 36.73          | 1       |             |              | 10             | 36.73          |
+
+
+
+## Frame and fasteners
+
+| **COMPONENT**           | **NAME**                                                           | **LINK**                                                                                                                                                                                                                                          | **Price (USD)** | **Price (AED)** | **QTY** | **Set PCS** | **PCS Used** | **Total (USD)** | **Total (AED)**                                                                                                                                                                                           | **Notes** |
+| -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- | -------------- | -------------- | ------- | ----------- | ------------ | -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| Frame                   | Pyrodrone HYPERLITE FLOSS 3.0 RACE FRAME 5"                        | [Pyrodrone](https://pyrodrone.com/products/hyperlite-floss-3-0-race-frame)                                                                                                                                                                                    | 44.99          | 165.23         | 1       |             |              | 44.99          | 165.23                                                                                                                                                                                                   |           |
+| Rods Bar                | M3 x 30mm Stainless Steel Fully Threaded Rods Bar                  | [Amazon](https://www.amazon.com/uxcell-0-5mm-Stainless-Threaded-Silver/dp/B01MDOFYCF)                                                                                        | 11.49          | 42.20          | 1              | 20      | 4           | 11.49        | 42.20          |                                                                                                                                                                                                          |
+| Standoff                | M3 x 60 mm female standoff                                         | [Google](https://www.google.com/search?q=m3+60+mm+female+standoff)                                                                                                                              | 13             | 47.74          | 1              |         | 4           | 13           | 47.74          | [The ones used in the video are from rjxhobby 50pcs](https://www.rjxhobby.com/Accessories/alum-standoff-spacer/rjx-50pcs-m3-aluminum-female-threaded-sleeve-bushing-hex-standoff-pillars-connector-nuts) |
+| Nylon bolts             | M3 Metric Black Nylon Hex Nut, Hexagonal                           | [Amazon](https://www.amazon.com/Electronics-Salon-100pcs-Metric-Black-Hexagonal/dp/B0129BDGW6)                                                                      | 4.8            | 17.63          | 1              | 100     | 8           | 4.8          | 17.63          |                                                                                                                                                                                                          |
+| Screws                  | M3 x 10mm Hex Button Head screws                                   | [Amazon](https://www.amazon.com/HELIFOUNER-Pieces-Button-Washers-Stainless/dp/B097Y4W8RF)                                                                                | 12.99          | 47.71          | 1              | 30      | 8           | 12.99        | 47.71          | The set in the link contains also unused sizes                                                                                                                                                           |
+| Screws                  | M3 x 25mm Hex Button Head screws                                   | [Amazon](https://www.amazon.com/HELIFOUNER-Pieces-Button-Washers-Stainless/dp/B097Y4W8RF)                                                                                | 12.99          | 47.71          | 1              | 20      | 4           | 12.99        | 47.71          | The set in the link contains also unused sizes
+| Self tapping Screws     | M2 x 10mm self tapping screws                                      | [Amazon](https://www.amazon.com/Nickel-Plated-Tapping-Assortment-Drilling-Storage/dp/B08FQWXCKG)                                                                  | 11.99          | 44.03          | 1              | 100     | 4           | 11.99        | 44.03          | The set in the link contains also unused sizes                                                                                                                                                           |
+| Battery strap           | 20 x 250 mm battery strap                                          | [Google](https://www.google.com/search?q=20+x+250+mm+battery+strap)                                                                                                                            | 5              | 18.36          | 1              |         |             | 5            | 18.36          |                                                                                                                                                                                                          |
+| Propellers              | Tmotor T5147                                                       | [T-Motor](https://store.tmotor.com/goods-820-T5147+2PairsBag.html)                                                                                                                                                                                          | 3.19           | 11.72          | 10             |         |             | 31.9         | 117.15         |         |
+
+
+
+## Battery and charger
+
+| **COMPONENT** | **NAME**                                                                          | **LINK**                                                                                                                                          | **Price (USD)** | **Price (AED)** | **QTY** | **Set PCS** | **Total (AED)** |
+| ------------- | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | --------------- | ------- | -------- | -------- |
+| Battery       | Tattu R-Line Version 5.0 1400mAh 22.2V 150C 6S1P Lipo Battery Pack With XT60 Plug | [Genstattu](https://genstattu.com/tattu-r-line-version-5-0-1400mah-22-2v-150c-6s1p-lipo-battery-pack-with-xt60-plug/) | 40.99          | 150.54         | 5       | 204.95         | 752.68         |
+| Charger       | HOTA D6 Pro Charger                                                               | [iFlight-RC](https://shop.iflight-rc.com/HOTA-D6-Pro-AC200W-DC650W-15A-1-6S-Dual-Channel-Charger-Pro1796)                           | 118.99         | 436.99         | 1       | 118.99         | 436.99         |
+
+
+
+## RC Controller
+
+| **COMPONENT** | **NAME**                                            | **LINK**                                         | **Price (USD)** | **Price (AED)** | **QTY** | **Total (USD)** | **Total (AED)** | **Notes**                                                                                                               |
+| ------------- | --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | -------------- | -------------- | ------- | -------------- | -------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| Controller    | RADIOMASTER TX16S Mark II Radio Controller (Mode 2) | [RadiomasterRC](https://www.radiomasterrc.com/collections/tx16s-mkii/products/tx16s-mark-ii-radio-controller?variant=42817741291751) | 199.99         | 734.46         | 1       | 199.99         | 734.46         |                                                                                                                         |
+| Transmitter   | TBS CROSSFIRE MICRO TX V2                           | [TBS](https://www.team-blacksheep.com/products/prod:crossfire_micro_tx)                                                    | 69.95          | 256.89         | 1       | 69.95          | 256.89         | [One could buy the kit with the receiver](https://www.radiomasterrc.com/products/tbs-crossfire-micro-tx-v2-starter-set) |
+
+
+
+## Tools
+
+| **COMPONENT**      | **NAME**                                                                    | **LINK**                                                                                                                          | **Price (USD)** | **Price (AED)** | **QTY** | **Total (USD)** | **Total (AED)** |
+| ------------------ | --------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- | -------------- | ------- | -------------- | -------------- |
+| Precision Tweezers | 6PCS Precision Tweezers Set                                                 | [Amazon](https://www.amazon.com/Precision-Anti-Static-Electronics-Laboratory-Jewelry-Making/dp/B07RNVXXV1) | 7.99           | 29.34          | 1       | 7.99           | 29.34          |
+| iFixit kit         | iFixit Manta Driver Kit                                                     | [Amazon](https://www.amazon.com/iFixit-Manta-Driver-Kit-Piece/dp/B07BMM74FD)                                                             | 69.99          | 257.04         | 1       | 69.99          | 257.04         |
+| Hex Driver         | 7pcs Hex Allen Screwdriver Kit 0.9mm 1.27mm 1.3mm 1.5mm 2.0mm 2.5mm 3.0mm   | [Amazon](https://www.amazon.com/driver-Screwdriver-Helicopter-Precision-Engineering/dp/B07V8SNSNV)                 | 17.99          | 66.07          | 1       | 17.99          | 66.07          |
+| Pliers             | 6PCS Mini Pliers Set                                                        | [Amazon](https://www.amazon.com/HAUTMEC-leverage-Linesman-Diagonal-Cutters/dp/B0BQVQZFK9)                                   | 26.99          | 99.12          | 1       | 26.99          | 99.12          |
+| Scissors           | Scissors                                                                    | [Amazon](https://www.amazon.com/Fiskars-01-004761J-Softgrip-Scissors-Stainless/dp/B002YIP97K)                           | 6.48           | 23.80          | 1       | 6.48           | 23.80          |
+| Wire Cutter        | VCELINK Small Wire Cutter Spring-loaded                                     | [Amazon](https://www.amazon.com/VCELINK-Spring-loaded-Precision-Diagonal-Electronics/dp/B09SL2TCH7)               | 6.88           | 25.27          | 1       | 6.88           | 25.27          |
+| Wire Stripper      | WGGE WG-015 Professional 8-inch Wire Stripper                               | [Amazon](https://www.amazon.com/WGGE-Professional-crimping-Multi-Tool-Multi-Function/dp/B073YG65N2)               | 8.59           | 31.55          | 1       | 8.59           | 31.55          |
+| Soldering Iron     | UY CHAN Original TS101 Soldering Pen                                        | [Amazon](https://www.amazon.com/UY-CHAN-Programmable-Pocket-size-Acceleration/dp/B01MDTO6X7)                             | 76.99          | 282.75         | 1       | 76.99          | 282.75         |
+| Soldering Iron tip | UY CHAN Original Soldering Iron Tip C4                                      | [Amazon](https://www.amazon.com/UY-CHAN-Original-Soldering-Replacement/dp/B06XYS34N4)                                           | 15.98          | 58.69          | 1       | 15.98          | 58.69          |
+| Solder             | SONEAK 60/40 Tin Lead Solder With Rosin Core For Electrical Soldering 1.0mm | [Amazon](https://www.amazon.com/SONEAK-Solder-Rosin-Electrical-Soldering/dp/B084RZF23H)                                       | 7.99           | 29.34          | 1       | 7.99           | 29.34          |
+| Heat gun           | Wagner Spraytech 2417344 HT1000 Heat Gun Kit                                | [Amazon](https://www.amazon.com/Wagner-Spraytech-2417344-Included-Settings/dp/B08RHDWTW1)                                   | 27.99          | 102.79         | 1       | 27.99          | 102.79         |
