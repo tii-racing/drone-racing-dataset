@@ -19,6 +19,7 @@ signal.signal(signal.SIGINT, signal_handler)
 
 images = sorted(glob(IMAGE_PATH + "*"))
 colors = ["r", "g", "b", "y"]
+keypoint_colors = ["yellow", "lime", "cyan", "magenta"]
 
 for image in images:
     with open(os.path.join(LABEL_PATH, os.path.basename(image).split(".")[0] + ".txt"), "r") as txt:  # read Yolo label in txt format
@@ -36,17 +37,17 @@ for image in images:
             h = int(bb[3] * img.size[1])
             x = int(bb[0] * img.size[0] - w/2)
             y = int(bb[1] * img.size[1] - h/2)
-            rect = patches.Rectangle((x, y), w, h, linewidth=1, edgecolor=colors[index], facecolor='none')
+            rect = patches.Rectangle((x, y), w, h, linewidth=3, edgecolor=colors[index], facecolor='none')
             plt.gca().add_patch(rect)
 
-            for kp in kps:
+            for kp_index, kp in enumerate(kps):
                 if kp[0] == 0 and kp[1] == 0:
                     continue
                 x = int(kp[0] * img.size[0])
                 y = int(kp[1] * img.size[1])
                 # non-visible corners are draw in white.
-                color = colors[index] if kp[2] == 2 else "w"
-                plt.scatter(x, y, marker="o", color=color, s=10)
+                color = keypoint_colors[kp_index] if kp[2] == 2 else "w"
+                plt.scatter(x, y, marker="o", color=color, s=18)
 
         plt.axis('off')  # Turn off axis ticks and labels
         plt.show()
