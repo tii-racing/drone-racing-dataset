@@ -3,19 +3,18 @@
 
 ## 3D prints
 
-| **COMPONENT**                                  | **FILE TYPE** | **LINK** |
-| ---------------------------------------------- | ------------- | -------- |
-| Floss 3D                                       | Fusion f3d    |          |
-| BEC support                                    | STL           |          |
-| 6S Battery Holder (optional)                   | STL           |          |
-| NX Base                                        | STL           |          |
-| NX Top                                         | STL           |          |
-| NX Top 30°                                     | STL           |          |
-| NX Top 40°                                     | STL           |          |
-| Camera Fron Case                               | STL           |          |
-| Support Qualisys marker                        | STL           |          |
-| Support Qualisys marker with thread high pitch | STL           |          |
-| Support Qualisys marker with thread low pitch  | STL           |          |
+| **COMPONENT**                                  |   **FILE**               |
+| ---------------------------------------------- | ------------------------ |
+| Camera front case With FPV holding             | [arducam_and_fpv_case.stl](https://github.com/Drone-Racing/drone-racing-dataset/blob/main/quadrotor/3d_print/arducam_and_fpv_case.stl) |
+| Camera front case Without FPV holding          | [arducam_case.stl](https://github.com/Drone-Racing/drone-racing-dataset/blob/main/quadrotor/3d_print/arducam_case.stl)         |
+| NX Bottom Plate                                | [nx_bottom.stl](https://github.com/Drone-Racing/drone-racing-dataset/blob/main/quadrotor/3d_print/nx_bottom.stl)            |
+| NX Top 30°                                     | [nx_top30.stl](https://github.com/Drone-Racing/drone-racing-dataset/blob/main/quadrotor/3d_print/nx_top30.stl)             |
+| NX Top 40°                                     | [nx_top40.stl](https://github.com/Drone-Racing/drone-racing-dataset/blob/main/quadrotor/3d_print/nx_top40.stl)             |
+| NX Top 50°                                     | [nx_top50.stl](https://github.com/Drone-Racing/drone-racing-dataset/blob/main/quadrotor/3d_print/nx_top50.stl)             |
+| BEC Support                                    | [bec_support.stl](https://github.com/Drone-Racing/drone-racing-dataset/blob/main/quadrotor/3d_print/bec_support.stl)          |
+| 6S Battery Cage                                | [battery-cage.stl](https://github.com/Drone-Racing/drone-racing-dataset/blob/main/quadrotor/3d_print/battery-cage.stl)         |
+| Serial Holder                                  | [serial_holder.stl](https://github.com/Drone-Racing/drone-racing-dataset/blob/main/quadrotor/3d_print/serial_holder.stl)        |
+| MoCap Marker Arm                               | [mocap_arm.stl](https://github.com/Drone-Racing/drone-racing-dataset/blob/main/quadrotor/3d_print/mocap_arm.stl)            |
 
 
 
@@ -54,20 +53,6 @@
 
 
 
-## Assembly elements
-
-| **COMPONENT**     | **NAME**                                                          | **LINK**                                                                                        | **Price (USD)** | **Price (AED)** | **QTY** | **Set PCS** | **PCS Used** | **Total (USD)** | **Total (AED)** |
-| ----------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------- | -------------- | ------- | ----------- | ------------ | -------------- | -------------- |
-| XT30 M+F          | XT30 Connectors Male and Female Connectors Plugs with heat shrink | [Amazon](https://www.amazon.com/Hobbypark-Bullet-Connectors-Female-Battery/dp/B07PN8WVGT) | 8.98           | 32.98          | 1       | 10          | 1            | 8.98           | 32.98          |
-| Cables            | 16AWG silicone cable                                              | [Google](https://www.google.com/search?q=16awg+cable+silicone)                                                       | 28             | 102.83         | 1       |             |              | 28             | 102.83         |
-| Jumpers           | Silicone jumpers arduino female                                   | [Google](https://www.google.com/search?q=silicone+jumpers+arduino)                                               | 9.95           | 36.54          | 1       |             |              | 9.95           | 36.54          |
-| Heat shrink tube  | Heat shrink tube 30mm                                             | [Google](https://www.google.com/search?q=heat+shrink+tube+30mm)                                                     | 6.49           | 23.83          | 1       |             |              | 6.49           | 23.83          |
-| Double sided tape | GORILLA HEAVY DUTY MOUNTING TAPE 1"X60"-Black                     | [Amazon](https://www.amazon.com/Gorilla-Double-Sided-Heavy-Mounting-Black/dp/B07PYG86FC)   | 11.74          | 43.12          | 1       |             |              | 11.74          | 43.12          |
-| Tape              | Electrical tape                                                   | [Google](https://www.google.com/search?q=electrical+tape)                                                                 | 4              | 14.69          | 1       |             |              | 4              | 14.69          |
-| Zipties           | 10 cm zipties                                                     | [Google](https://www.google.com/search?q=10+cm+zipties)                                                                     | 10             | 36.73          | 1       |             |              | 10             | 36.73          |
-
-
-
 ## Frame and fasteners
 
 | **COMPONENT**           | **NAME**                                                           | **LINK**                                                                                                                                                                                                                                          | **Price (USD)** | **Price (AED)** | **QTY** | **Set PCS** | **PCS Used** | **Total (USD)** | **Total (AED)**                                                                                                                                                                                           | **Notes** |
@@ -84,6 +69,20 @@
 
 
 
+## Assembly elements
+
+| **COMPONENT**     | **NAME**                                                          | **LINK**                                                                                        | **Price (USD)** | **Price (AED)** | **QTY** | **Set PCS** | **PCS Used** | **Total (USD)** | **Total (AED)** |
+| ----------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------- | -------------- | ------- | ----------- | ------------ | -------------- | -------------- |
+| XT30 M+F          | XT30 Connectors Male and Female Connectors Plugs with heat shrink | [Amazon](https://www.amazon.com/Hobbypark-Bullet-Connectors-Female-Battery/dp/B07PN8WVGT) | 8.98           | 32.98          | 1       | 10          | 1            | 8.98           | 32.98          |
+| Cables            | 16AWG silicone cable                                              | [Google](https://www.google.com/search?q=16awg+cable+silicone)                                                       | 28             | 102.83         | 1       |             |              | 28             | 102.83         |
+| Jumpers           | Silicone jumpers arduino female                                   | [Google](https://www.google.com/search?q=silicone+jumpers+arduino)                                               | 9.95           | 36.54          | 1       |             |              | 9.95           | 36.54          |
+| Heat shrink tube  | Heat shrink tube 30mm                                             | [Google](https://www.google.com/search?q=heat+shrink+tube+30mm)                                                     | 6.49           | 23.83          | 1       |             |              | 6.49           | 23.83          |
+| Double sided tape | GORILLA HEAVY DUTY MOUNTING TAPE 1"X60"-Black                     | [Amazon](https://www.amazon.com/Gorilla-Double-Sided-Heavy-Mounting-Black/dp/B07PYG86FC)   | 11.74          | 43.12          | 1       |             |              | 11.74          | 43.12          |
+| Tape              | Electrical tape                                                   | [Google](https://www.google.com/search?q=electrical+tape)                                                                 | 4              | 14.69          | 1       |             |              | 4              | 14.69          |
+| Zipties           | 10 cm zipties                                                     | [Google](https://www.google.com/search?q=10+cm+zipties)                                                                     | 10             | 36.73          | 1       |             |              | 10             | 36.73          |
+
+
+
 ## Battery and charger
 
 | **COMPONENT** | **NAME**                                                                          | **LINK**                                                                                                                                          | **Price (USD)** | **Price (AED)** | **QTY** | **Set PCS** | **Total (AED)** |
@@ -93,7 +92,7 @@
 
 
 
-## RC Controller
+## Radio Controller
 
 | **COMPONENT** | **NAME**                                            | **LINK**                                         | **Price (USD)** | **Price (AED)** | **QTY** | **Total (USD)** | **Total (AED)** | **Notes**                                                                                                               |
 | ------------- | --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | -------------- | -------------- | ------- | -------------- | -------------- | ----------------------------------------------------------------------------------------------------------------------- |
@@ -102,7 +101,7 @@
 
 
 
-## Tools
+## Tools (optional)
 
 | **COMPONENT**      | **NAME**                                                                    | **LINK**                                                                                                                          | **Price (USD)** | **Price (AED)** | **QTY** | **Total (USD)** | **Total (AED)** |
 | ------------------ | --------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------- | -------------- | ------- | -------------- | -------------- |
