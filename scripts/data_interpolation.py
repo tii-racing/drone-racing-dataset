@@ -98,6 +98,7 @@ def main():
 
     print("Loading and pre-processing CSVs...")
 
+    flight_name = args.flight.split("/")[-1]
     csv_dir = os.path.join(args.flight, "csv_raw")
     rosbag_dir = os.path.join(csv_dir, "ros2bag_dump")
     csv_filenames = ['camera_', 'imu_', 'motors_thrust_', 'channels_', 'battery_', 'mocap_', 'gate_corners_']
@@ -106,7 +107,7 @@ def main():
     dfs = []
     for i, filename in enumerate(csv_filenames):
         root = rosbag_dir if inside_ros_dir[i] else csv_dir
-        csv_path = os.path.join(root, filename + args.flight + '.csv')
+        csv_path = os.path.join(root, filename + flight_name + '.csv')
         df = pd.read_csv(csv_path)
         dfs.append(df)
 
@@ -134,7 +135,7 @@ def main():
 
     sync_option = input("Select a sync option (A/B): ")
 
-    final_csv_name = args.flight
+    final_csv_name = flight_name
 
     if sync_option == "A":
         reference_df = camera_df
