@@ -142,7 +142,7 @@ def main():
         dfs_to_sync = [imu_df, thrust_df, channels_df, battery_df, mocap_df, gate_corners_df]
         final_csv_name += '_cam_ts_sync'
     elif sync_option == "B":
-        frequency = float(input("Enter the desired frequency [hz]: "))
+        frequency = int(input("Enter the desired frequency [hz]: "))
         first_timestamp = camera_df['timestamp'].iloc[0]
         last_timestamp = camera_df['timestamp'].iloc[-1]
         target_timestamps = np.arange(first_timestamp, last_timestamp, 1.0 / frequency * 1000000, dtype=np.ulonglong)
