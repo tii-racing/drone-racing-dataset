@@ -4,6 +4,7 @@ import glob
 from tqdm import tqdm
 import argparse
 import os
+import json
 
 CALIB_SHAPE = (6, 8)  # (rows, cols) as in released calibration images
 
@@ -49,8 +50,19 @@ def main(args):
     print("Distortion Coefficients:\n", dist)
 
     # Save calibration results to a file
-    print("Saving camera matrix and distortion coefficients into calibration_results.npz")
-    np.savez("calibration_results.npz", mtx=mtx, dist=dist)
+    print("Saving camera matrix and distortion coefficients into camera/calibration_results.npz")
+    np.savez("camera/calibration_results.npz", mtx=mtx, dist=dist)
+
+    print("Saving also in json file camera/calibration_results.json")
+    with open("camera/calibration_results.json", "w") as f:
+        output = {
+            'mtx': np.array(mtx).tolist(),
+            'dist': np.array(dist).tolist()
+        }
+
+        json.dump(output, f)
+
+        f.close()
 
 
 if __name__ == "__main__":
