@@ -93,13 +93,14 @@ def calc_angular_velocity(rotation_matrix, last_rotation_matrix, dt):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--flight', required=True, help="Flight directory containing CSVs (e.g. flight-01p-ellipse)")
+    parser.add_argument('--flight', required=True, help="Flight ID (e.g., flight-01p-ellipse)")
     args = parser.parse_args()
 
     print("Loading and pre-processing CSVs...")
 
-    flight_name = args.flight.split("/")[-1]
-    csv_dir = os.path.join(args.flight, "csv_raw")
+    flight_type = "piloted" if "p-" in args.flight else "autonomous"
+    flight_dir = os.path.join("..", "data", flight_type, args.flight)
+    csv_dir = os.path.join(flight_dir, "csv_raw")
     rosbag_dir = os.path.join(csv_dir, "ros2bag_dump")
     csv_filenames = ['camera_', 'imu_', 'motors_thrust_', 'channels_', 'battery_', 'mocap_', 'gate_corners_']
     inside_ros_dir = [False, True, True, True, True, False, False]
@@ -107,7 +108,7 @@ def main():
     dfs = []
     for i, filename in enumerate(csv_filenames):
         root = rosbag_dir if inside_ros_dir[i] else csv_dir
-        csv_path = os.path.join(root, filename + flight_name + '.csv')
+        csv_path = os.path.join(root, filename + args.flight + '.csv')
         df = pd.read_csv(csv_path)
         dfs.append(df)
 
@@ -135,7 +136,7 @@ def main():
 
     sync_option = input("Select a sync option (A/B): ")
 
-    final_csv_name = flight_name
+    final_csv_name = args.flight
 
     if sync_option == "A":
         reference_df = camera_df
@@ -170,7 +171,7 @@ def main():
 
     final_df = pd.concat([reference_df] + synchronized_dfs, axis=1)
     print("Saving final CSV...")
-    final_df.to_csv(os.path.join(args.flight, final_csv_name + '.csv'), index=False)
+    final_df.to_csv(os.path.join(flight_dir, final_csv_name + '.csv'), index=False)
     print("Final CSV saved.")
 
 if __name__ == "__main__":

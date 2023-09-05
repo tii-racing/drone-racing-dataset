@@ -17,9 +17,9 @@ signal.signal(signal.SIGINT, signal_handler)
 
 
 def show_labels(flight):
-    flight_name = flight.split("/")[-1]
-    image_path = os.path.join(flight, "camera_" + flight_name + "/")
-    label_path = os.path.join(flight, "labels_" + flight_name + "/")
+    flight_type = "piloted" if "p-" in args.flight else "autonomous"
+    image_path = os.path.join("..", "data", flight_type, flight, "camera_" + flight + "/")
+    label_path = os.path.join("..", "data", flight_type, flight, "labels_" + flight + "/")
 
     images = sorted(glob(image_path + "*"))
     colors = ["r", "g", "b", "y"]
@@ -58,6 +58,6 @@ def show_labels(flight):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('--flight', required=True, help="Flight directory containing images and labels (e.g. flight-01p-ellipse)")
+    parser.add_argument('--flight', required=True, help="Flight ID (e.g., flight-01p-ellipse)")
     args = parser.parse_args()
     show_labels(args.flight)
