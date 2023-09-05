@@ -1,7 +1,6 @@
+import argparse
 import os
-import re
-import sys
-import zipfile
+from glob import glob
 import pandas as pd
 import cv2
 from sensor_msgs.msg import Imu
@@ -61,27 +60,18 @@ def create_topic(writer, topic_name, topic_type, serialization_format='cdr'):
 
     writer.create_topic(topic)
 
-def validate_folder_name(folder_name):
-    pattern = r'^flight-\d{2}[ap]-(?:ellipse|lemniscate)$'
-    return re.match(pattern, folder_name)
-
 def main():
-    if len(sys.argv) != 2:
-        print("Usage: python create_std_bag.py <flight_path>")
-        return
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--flight', required=True, help="Flight ID (e.g., flight-01p-ellipse)")
+    args = parser.parse_args()
 
-    flight_run_path = sys.argv[1]
-
-    if validate_folder_name(flight_run_path):
-        folder_name = flight_run_path
-        bag_path = os.path.join(folder_name, f"ros2bag_{folder_name}")
-    else:
-        print("Invalid folder name format (flight-XXy-[ellipse|lemniscate])")
-        sys.exit(1)
+    flight_type = "piloted" if "p-" in args.flight else "autonomous"
+    flight_dir = os.path.join("..", "data", flight_type, args.flight)
+    bag_path = os.path.join(flight_dir, f"ros2bag_{args.flight}")
+    image_path = os.path.join(flight_dir, "camera_" + args.flight + "/")
 
     imu_df = pd.DataFrame(columns=["timestamp", "accel_x", "accel_y", "accel_z", "gyro_x", "gyro_y", "gyro_z"])
     qualisys_df = pd.DataFrame(columns=["timestamp", "pose", "twist"])
-    image_paths = []
 
     # Read IMU data from rosbag
     storage_options, converter_options = get_rosbag_options(bag_path, 'sqlite3')
@@ -98,7 +88,7 @@ def main():
     qualisys_data_list = []
 
     while reader.has_next():
-        (topic, data, t) = reader.read_next()
+        (topic, data, _) = reader.read_next()
         msg_type = get_message(type_map[topic])
         if(msg_type.__name__ == 'SensorImu'):
             imu_data = deserialize_message(data, msg_type)
@@ -119,23 +109,13 @@ def main():
                 "velocity": qualisys_data.velocity,
             })
 
-    
     del reader
 
     imu_df = pd.DataFrame(imu_data_list)
     qualisys_df = pd.DataFrame(qualisys_data_list)
 
-    # Extract image paths from the zipfile
-    zip_path = os.path.join(folder_name, f"camera_{folder_name}.zip")
-        
-    with zipfile.ZipFile(zip_path, "r") as zip_ref:
-        image_paths = [file for file in zip_ref.namelist() if file.lower().endswith(('.jpg', '.jpeg', '.png', '.gif'))]
-
-        for path in image_paths:
-            zip_ref.extract(path, flight_run_path)
-
     # Create a ROS2 bag for output
-    output_bag_path = os.path.join(flight_run_path, "imu_cam_bag")
+    output_bag_path = os.path.join(flight_dir, "imu_cam_bag")
     storage_options, converter_options = get_rosbag_options(output_bag_path, 'sqlite3')
     writer = rosbag2_py.SequentialWriter()
     writer.open(storage_options, converter_options)
@@ -145,9 +125,6 @@ def main():
     create_topic(writer, '/camera/image', 'sensor_msgs/msg/Image')
     create_topic(writer, '/perception/drone_state', 'geometry_msgs/PoseStamped')
 
-    start_time = imu_df["timestamp"].min()
-    end_time = imu_df["timestamp"].max()
-
     print("Converting IMU...")
     for _, row in imu_df.iterrows():
         imu_msg = create_imu_msg(
@@ -155,7 +132,6 @@ def main():
             row["accel_x"], row["accel_y"], row["accel_z"],
             row["gyro_x"], row["gyro_y"], row["gyro_z"]
         )
-        #print(imu_msg.header.stamp.sec, imu_msg.header.stamp.nanosec, 'IMU')
         writer.write('/sensors/imu', serialize_message(imu_msg), int(convert_to_nanosec(row["timestamp"])))
     
     print("Converting POSE...")
@@ -164,23 +140,20 @@ def main():
             convert_to_nanosec(int(row["timestamp"])),
             row["pose"]
         )
-        #print(pose_msg.header.stamp.sec, pose_msg.header.stamp.nanosec, 'POSE')
         writer.write('/perception/drone_state', serialize_message(pose_msg), int(convert_to_nanosec(row["timestamp"])))
     
     print("Converting IMAGE...(it may take several GBs)")
-    for image_path in image_paths[1:]:
-        filename = image_path.split('/')[-1]
-        timestamp = filename.split('_')[1].split('.')[0]
+    images = sorted(glob(image_path + "*"))
+    for image in images:
+        timestamp = image.split('_')[-1].split('.')[0]
         image_msg = create_image_msg(
-            os.path.join(flight_run_path, image_path),
+            image,
             convert_to_nanosec(int(timestamp))
         )
         #print(image_msg.header.stamp.sec, image_msg.header.stamp.nanosec, 'IMAGE')
         writer.write('/camera/image', serialize_message(image_msg), convert_to_nanosec(int(timestamp)))
 
     del writer
-
-    duration = end_time - start_time
 
 if __name__ == "__main__":
     main()
