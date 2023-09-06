@@ -49,6 +49,8 @@
 | **COMPONENT**     |  **NAME**                             | **LINK**                                                                                                                                                           | **Price (USD)** | **QTY** | **Total (USD)** | 
 | ----------------- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------- |  ------ | --------------- |
 | FPV Camera        | Foxeer T-Rex Mini 1500TVL             | [Foxeer](https://www.foxeer.com/foxeer-t-rex-mini-1500tvl-6ms-low-latency-super-wdr-fpv-camera-g-314)                                                              | 44.9            | 1       | 44.9            | 
+| VTX           | TBS UNIFY PRO 5G8 HV (SMA)                        | [TBS](https://www.team-blacksheep.com/products/prod:unify_pro_hv_sma)                                                | 49.95             | 1       | 49.95             | 
+| FPV Antenna           | TBS TRIUMPH PRO (SMA)                        | [TBS](https://www.team-blacksheep.com/products/prod:triumph_pro_sma)                                                | 19.95             | 1       | 19.95             | 
 | Goggles           | Fat Shark HDO2                        | [Fat Shark](https://pyrodrone.com/collections/fatshark-products/products/fatshark-dominator-hdo-2-oled-fpv-goggles)                                                | 499             | 1       | 499             | 
 
 ______
@@ -75,7 +77,7 @@ ______
 | ----------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | --------------- | ------- | ------------ | ------------ | --------------- |
 | XT30 M+F          | XT30 Connectors Male and Female Connectors Plugs with heat shrink | [Amazon](https://www.amazon.com/Hobbypark-Bullet-Connectors-Female-Battery/dp/B07PN8WVGT)       | 8.98            | 1       | 10           | 1            | 8.98            | 
 | Cables            | 16AWG silicone cable                                              | [Google](https://www.google.com/search?q=16awg+cable+silicone)                                  | 28              | 1       |              |              | 28              | 
-| Jumpers           | Silicone jumpers arduino female                                   | [Google](https://www.google.com/search?q=silicone+jumpers+arduino)                              | 9.95            | 1       |              |              | 9.95            | 
+| Shielded Cable           |  RVVP Shielded Cable 3 pin 0.5mm Copper Wire                                   | [Aliexpress](https://www.aliexpress.us/item/32976787590.html)                              | 13.84            | 1       |              |              | 13.84            | 
 | Heat shrink tube  | Heat shrink tube 30mm                                             | [Google](https://www.google.com/search?q=heat+shrink+tube+30mm)                                 | 6.49            | 1       |              |              | 6.49            | 
 | Double sided tape | GORILLA HEAVY DUTY MOUNTING TAPE 1"X60"-Black                     | [Amazon](https://www.amazon.com/Gorilla-Double-Sided-Heavy-Mounting-Black/dp/B07PYG86FC)        | 11.74           | 1       |              |              | 11.74           | 
 | Tape              | Electrical tape                                                   | [Google](https://www.google.com/search?q=electrical+tape)                                       | 4               | 1       |              |              | 4               | 
@@ -85,7 +87,7 @@ ______
 
 ## Battery and charger
 
-| **COMPONENT** | **NAME**                                                                          | **LINK**                                                                                                              | **Price (USD)** | **QTY** | **Set PCS** | 
+| **COMPONENT** | **NAME**                                                                          | **LINK**                                                                                                              | **Price (USD)** | **QTY** | **Total (USD)** | 
 | ------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------- | ------- | ----------- |
 | Battery       | Tattu R-Line Version 5.0 1400mAh 22.2V 150C 6S1P Lipo Battery Pack With XT60 Plug | [Genstattu](https://genstattu.com/tattu-r-line-version-5-0-1400mah-22-2v-150c-6s1p-lipo-battery-pack-with-xt60-plug/) | 40.99           | 5       | 204.95      | 
 | Charger       | HOTA D6 Pro Charger                                                               | [iFlight-RC](https://shop.iflight-rc.com/HOTA-D6-Pro-AC200W-DC650W-15A-1-6S-Dual-Channel-Charger-Pro1796)             | 118.99          | 1       | 118.99      |
@@ -116,3 +118,10 @@ ______
 | Soldering Iron tip | UY CHAN Original Soldering Iron Tip C4                                      | [Amazon](https://www.amazon.com/UY-CHAN-Original-Soldering-Replacement/dp/B06XYS34N4)                      | 15.98           | 1       | 15.98           | 
 | Solder             | SONEAK 60/40 Tin Lead Solder With Rosin Core For Electrical Soldering 1.0mm | [Amazon](https://www.amazon.com/SONEAK-Solder-Rosin-Electrical-Soldering/dp/B084RZF23H)                    | 7.99            | 1       | 7.99            | 
 | Heat gun           | Wagner Spraytech 2417344 HT1000 Heat Gun Kit                                | [Amazon](https://www.amazon.com/Wagner-Spraytech-2417344-Included-Settings/dp/B08RHDWTW1)                  | 27.99           | 1       | 27.99           | 
+
+## Utilities (optional)
+
+| **COMPONENT**      | **NAME**                                                                    | **LINK**                                                                                                   | **Price (USD)** | **QTY** | **Total (USD)** | 
+| ------------------ | --------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | --------------- | ------- | --------------- | 
+| Battery checker           | Smart battery checker                                | [TBS](https://www.team-blacksheep.com/products/product:1809)                  | 39.99           | 1       | 39.99           | 
+| Battery bag           | Lipo safe battery bag                                | [Google](https://www.google.com/search?q=lipo+safe+battery+bag)                  | 14.99           | 1       | 14.99           | 
