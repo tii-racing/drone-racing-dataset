@@ -41,7 +41,7 @@ def add_velocity_columns(df):
 
     for index, row in df.iterrows():
         if index > 0:
-            dt = row['timestamp'] - df.at[index - 1, 'timestamp']
+            dt = row['timestamp'] - df.at[index - 1, 'timestamp'] / 1000000.0
             linear_vx = calc_linear_velocity(row['drone_x'], df.at[index - 1, 'drone_x'], dt, drone_velocity_linear_x[-1])
             linear_vy = calc_linear_velocity(row['drone_y'], df.at[index - 1, 'drone_y'], dt, drone_velocity_linear_y[-1])
             linear_vz = calc_linear_velocity(row['drone_z'], df.at[index - 1, 'drone_z'], dt, drone_velocity_linear_z[-1])
