@@ -169,6 +169,8 @@ def main():
 # Saving Dataframes
 #####################
 
+    time_column = (reference_df['timestamp'] - reference_df['timestamp'].iloc[0]) / 1000000
+    reference_df.insert(0, 'time', time_column)
     final_df = pd.concat([reference_df] + synchronized_dfs, axis=1)
     print("Saving final CSV...")
     final_df.to_csv(os.path.join(flight_dir, final_csv_name + '.csv'), index=False)
