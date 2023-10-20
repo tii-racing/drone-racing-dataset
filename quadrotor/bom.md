@@ -1,5 +1,13 @@
 # Bill of materials
 
+The video tutorial to build the drone is accessible at this [link](https://youtu.be/fTDg2uYgesY).
+
+Please note that the design improved over time so there could be small differences between the video and the BOM/STLs.
+The main differences are:
+- A Shorter WiFi antenna is used for the NX, it can be placed on the NX fan and under the top case.
+- The camera holding now has room for the ribbon cable, and a small hole below for the cable to pass through.
+- A shielded cable is suggested for the serial connection between the NX and the flight controller.
+- A serial holder is provided among the 3D files, to hold the serial cable in place.
 
 ## 3D prints
 

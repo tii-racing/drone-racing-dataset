@@ -2,9 +2,6 @@
 Race Against the Machine: a Fully-annotated, Open-design
 Dataset of Autonomous and Piloted High-speed Flight
 
-## Introduction
-TODO
-
 ## Paper
 If you use this repo, please cite our paper:
 
@@ -16,9 +13,45 @@ Dataset of Autonomous and Piloted High-speed Flight* [[DOI]](link)]
     TODO
 }
 ```
+## Introduction
+Dataset for drone racing that is characterized by:
+- fast (>20m/s), aggressive flight
+- autonomous and human-piloted flights, on multiple trajectories
+- high-resolution, high-frequency collection of visual, inertial, and motion capture data
+- presence of drone racing gates fully labeled to the level of individual corners
+- includes commands, inputs, and battery voltages
 
-## Data Preview
-TODO
+
+### Data Preview
+
+Columns of the comprehensive synchronized CSVs:
+
+| Column Number and Quantity Name | Unit | Data Type |
+| --- | --- | --- |
+| 0. `elapsed_time` | $s$ | float |
+| 1. `timestamp` | $\mu s$ | int |
+| 2. `img_filename` | n/a | string |
+| 3. `accel_[x/y/z]` | $m/s^2$ | float |
+| 6. `gyro_[x/y/z]` | $rad/s$ | float |
+| 9. `thrust[0-3]` | $1$ | float $\in [0,1]$ |
+| 13. `channels_[roll/pitch/thrust/yaw]` | $1$ | int $\in [1000,2000]$ |
+| 17. `aux[1-4]` | $1$ | int $\in [1000,2000]$ |
+| 21. `vbat` | $V$ | float |
+| 22. `drone_[x/y/z]` | $m$ | float |
+| 25. `drone_[roll/pitch/yaw]` | $rad$ | float |
+| 28. `drone_velocity_linear_[x/y/z]` | $m/s^2$ | float |
+| 31. `drone_velocity_angular_[x/y/z]` | $rad/s$ | float |
+| 34. `drone_residual` | $m$ | float |
+| 35. `drone_rot[[0-8]]` | $1$ | float |
+| 44. `gate[1-4]_int_[x/y/z]` | $m$ | float |
+| 56. `gate[1-4]_int_[roll/pitch/yaw]` | $rad$ | float |
+| 68. `gate[1-4]_int_residual` | $m$ | float |
+| 72. `gate[1-4]_int_rot[[0-8]]` | $1$ | float |
+| 108. `gate[1-4]_marker[1-4]_[x/y/z]` | $m$ | float |
+
+### Drone Design
+
+The directory *quadrotor* contains the bill of material and STL files of the open design (with commercial off-the-shelf components) of the racing drone used to collect the data. In the BOM it's present a link to the tutorial to assemble the drone.
 
 ## Data Usage
 Data are provided in both CSV and ROS2 format.
@@ -111,4 +144,15 @@ Default: all.
     python3 standard_bag_conversion.py --flight flight-01a-ellipse
 
 ## Resources
-TODO
+- *camera_calibration*:
+    - *calibration_results.json* Camera parameters of the camera used in the dataset in json format.
+    - *calibration_results.npz* Camera parameters of the camera used in the dataset in numpy format.
+    - *drone_to_camera.json* Translation from the drone center to the camera in json format.
+- *drone_racing_msgs*: Custom ROS2 messages used in the dataset.
+- *quadrotor*: Bill of materials and STL files of the quadrotor used in the dataset.
+- *scripts*: Python scripts to visualize and convert the data.
+    - *reference_controller.py*: Python code that mimic the reference controller used for the autonomous control of the quadrotor.
+    - *camera_calibration.py*: Script used to generate the files under camera_calibration.
+
+## License
+The dataset and the code are released under the [MIT license](LICENSE).
