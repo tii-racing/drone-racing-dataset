@@ -1,6 +1,4 @@
-# drone-racing-dataset
-Race Against the Machine: a Fully-annotated, Open-design
-Dataset of Autonomous and Piloted High-speed Flight
+# Race Against the Machine: a Fully-annotated, Open-design Dataset of Autonomous and Piloted High-speed Flight
 
 ## Paper
 If you use this repo, please cite our paper:
