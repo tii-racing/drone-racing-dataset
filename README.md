@@ -4,7 +4,7 @@
 If you use this repo, please cite our paper:
 
 *Race Against the Machine: a Fully-annotated, Open-design
-Dataset of Autonomous and Piloted High-speed Flight* [[DOI]](link)]
+Dataset of Autonomous and Piloted High-speed Flight* [[DOI](link)]
 
 ```
 @Article{
