@@ -19,7 +19,7 @@ signal.signal(signal.SIGINT, signal_handler)
 def show_labels(flight):
     flight_type = "piloted" if "p-" in args.flight else "autonomous"
     image_path = os.path.join("..", "data", flight_type, flight, "camera_" + flight + "/")
-    label_path = os.path.join("..", "data", flight_type, flight, "labels_" + flight + "/")
+    label_path = os.path.join("..", "data", flight_type, flight, "label_" + flight + "/")
 
     images = sorted(glob(image_path + "*"))
     colors = ["r", "g", "b", "y"]
