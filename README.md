@@ -54,15 +54,55 @@ The directory *quadrotor* contains the bill of material and STL files of the ope
 ## Data Usage
 Data are provided in both CSV and ROS2 format.
 
-Download the dataset from the [release section](https://github.com/Drone-Racing/drone-racing-dataset/releases)
+### Ubuntu and Mac OS
+Download the dataset from the [release section](https://github.com/Drone-Racing/drone-racing-dataset/releases) and reconstruct the zip files:
 
     mkdir data && cd data
-    wget LINK_TO_RELEASE
+
+    wget https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v1.0.0/autonomous_zipchunk01
+    wget https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v1.0.0/autonomous_zipchunk02
+    cat autonomous_zipchunk* > autonomous.zip
+
+    wget https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v1.0.0/piloted_zipchunk01
+    wget https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v1.0.0/piloted_zipchunk02
+    wget https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v1.0.0/piloted_zipchunk03
+    wget https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v1.0.0/piloted_zipchunk04
+    wget https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v1.0.0/piloted_zipchunk05
+    wget https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v1.0.0/piloted_zipchunk06
+    cat piloted_zipchunk* > piloted.zip
 
 Unzip the downloaded files and then unzip the images and labels of each flight:
 
-    find . -type f -name '*.zip' -exec unzip {} \; #unzip autonomous and piloted
-    find . -type f -name '*.zip' -exec unzip {} \; #unzip images and labels
+    find . -type f -name '*.zip' -exec unzip {} \;
+    find autonomous -type f -name '*.zip' -execdir unzip {} \;
+    find piloted -type f -name '*.zip' -execdir unzip {} \;
+
+### Windows
+Download the dataset from the [release section](https://github.com/Drone-Racing/drone-racing-dataset/releases) and reconstruct the zip files:
+
+    mkdir data && cd data
+
+    curl https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v1.0.0/autonomous_zipchunk01 > autonomous_zipchunk01
+    curl https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v1.0.0/autonomous_zipchunk02 > autonomous_zipchunk02
+    copy /B autonomous_zipchunk* autonomous.zip
+
+    curl https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v1.0.0/piloted_zipchunk01 > piloted_zipchunk01
+    curl https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v1.0.0/piloted_zipchunk02 > piloted_zipchunk02
+    curl https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v1.0.0/piloted_zipchunk03 > piloted_zipchunk03
+    curl https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v1.0.0/piloted_zipchunk04 > piloted_zipchunk04
+    curl https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v1.0.0/piloted_zipchunk05 > piloted_zipchunk05
+    curl https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v1.0.0/piloted_zipchunk06 > piloted_zipchunk06
+    copy /B piloted_zipchunk* piloted.zip
+
+Unzip the downloaded files and then unzip the images and labels of each flight:
+
+    tar -xf autonomous.zip
+    tar -xf piloted.zip
+    cd autonomous
+    for /d %r in (*) do for %s in ("%r\*.zip") do tar -xf %s -C %~dps
+    cd ../piloted
+    for /d %r in (*) do for %s in ("%r\*.zip") do tar -xf %s -C %~dps
+
 
 ### Images and Labels usage
 Each flight contains a folder with the images and a folder with the labels. The images are stored with path `{FLIGHT_NAME}/camera_{FLIGHT_NAME}/{IMG_NUM}_{TIMESTAMP}.jpg` and the labels with path `{FLIGHT_NAME}/labels_{FLIGHT_NAME}/{IMG_NUM}_{TIMESTAMP}.txt`. Each line in a TXT file represents a single gate in the form:
@@ -88,12 +128,19 @@ To play the rosbag you need to:
     cd ~/drone_racing_ws/src
     git clone https://github.com/Drone-Racing/drone-racing-msgs.git
     cd ..
+    rosdep install --from-paths src --ignore-src -r -y
     colcon build --symlink-install
 
 #### 3) Source the ROS2 workspace and Play the rosbag
 
     source ~/drone_racing_ws/install/setup.bash
     ros2 bag play data/autonomous/flight-01a-ellipse/ros2bag_flight-01a-ellipse
+
+#### 4) Print the topic list and echo a topic
+
+    source ~/drone_racing_ws/install/setup.bash
+    ros2 topic list
+    ros2 topic echo sensors/imu
 
 ## Scripts Quick Start
 
@@ -109,15 +156,7 @@ To play the rosbag you need to:
 
 ### 3) Download the datasets
 
-Download the dataset from the [release section](https://github.com/Drone-Racing/drone-racing-dataset/releases) and put the zip files in the directory `data`.
-
-    cd data
-    wget LINK_TO_RELEASE
-
-Unzip the downloaded files and then unzip the images and labels of each flight:
-
-    find . -type f -name '*.zip' -exec unzip {} \; #unzip autonomous and piloted
-    find . -type f -name '*.zip' -exec unzip {} \; #unzip images and labels
+Follow the instructions in the [Data Usage](#data-usage) section, creating the `data` folder in the root of the repository.
 
 ### 4) Run one of the scripts
 
