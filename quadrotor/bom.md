@@ -1,6 +1,6 @@
 # Bill of materials
 
-The video tutorial to build the drone is accessible at this [link](https://youtu.be/fTDg2uYgesY).
+The video tutorial to build the drone is accessible at this [link](https://youtu.be/xvOS7IEFxlU).
 
 Please note that the design improved over time so there could be small differences between the video and the BOM/STLs.
 The main differences are:
