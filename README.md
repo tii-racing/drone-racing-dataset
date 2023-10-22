@@ -164,21 +164,23 @@ Follow the instructions in the [Data Usage](#data-usage) section, creating the `
 
 #### 4.1) Data interpolation
 
-    python3 data_interpolation.py --flight flight-01p-ellipse
+    python3 data_interpolation.py --flight flight-01a-ellipse
 
 #### 4.2) Data visualization 
 Available subplots: '3d', 'accel', 'gyro', 'thrust', 'vbat', 'position', 'rotation', 'channels'.
 Default: all.
 
-    python3 data_plotting.py --csv-file flight-01p-ellipse_cam_ts_sync.csv --subplots 3d accel gyro
+    python3 data_plotting.py --csv-file ../data/autonomous/flight-01a-ellipse/flight-01a-ellipse_cam_ts_sync.csv --subplots 3d accel gyro
 
 #### 4.3) Label visualization
 
     python3 label_visualization.py --flight flight-01a-ellipse
 
 #### 4.4) Standard bag creation
+You need to have the ROS2 workspace with the custom messages installed (see [ROS2 bags play](#ros2-bags-play)).
 
-    python3 standard_bag_conversion.py --flight flight-01a-ellipse
+    source ~/drone_racing_ws/install/setup.bash
+    python3 create_std_bag.py --flight flight-01a-ellipse
 
 ## Resources
 - *camera_calibration*:
