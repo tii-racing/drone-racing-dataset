@@ -54,54 +54,17 @@ The directory *quadrotor* contains the bill of material and STL files of the ope
 ## Data Usage
 Data are provided in both CSV and ROS2 format.
 
+Use the provided script to download the dataset.
+
 ### Ubuntu and Mac OS
-Download the dataset from the [release section](https://github.com/Drone-Racing/drone-racing-dataset/releases) and reconstruct the zip files:
+Tested on October 2023 with **Ubuntu 20.04 LTS**, **macOS 14**
 
-    mkdir data && cd data
-
-    wget https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v1.0.0/autonomous_zipchunk01
-    wget https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v1.0.0/autonomous_zipchunk02
-    cat autonomous_zipchunk* > autonomous.zip
-
-    wget https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v1.0.0/piloted_zipchunk01
-    wget https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v1.0.0/piloted_zipchunk02
-    wget https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v1.0.0/piloted_zipchunk03
-    wget https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v1.0.0/piloted_zipchunk04
-    wget https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v1.0.0/piloted_zipchunk05
-    wget https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v1.0.0/piloted_zipchunk06
-    cat piloted_zipchunk* > piloted.zip
-
-Unzip the downloaded files and then unzip the images and labels of each flight:
-
-    find . -type f -name '*.zip' -exec unzip {} \;
-    find autonomous -type f -name '*.zip' -execdir unzip {} \;
-    find piloted -type f -name '*.zip' -execdir unzip {} \;
+    ./data_downloader.sh
 
 ### Windows
-Download the dataset from the [release section](https://github.com/Drone-Racing/drone-racing-dataset/releases) and reconstruct the zip files:
+Tested on October 2023 with **Windows 11**
 
-    mkdir data && cd data
-
-    curl https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v1.0.0/autonomous_zipchunk01 > autonomous_zipchunk01
-    curl https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v1.0.0/autonomous_zipchunk02 > autonomous_zipchunk02
-    copy /B autonomous_zipchunk* autonomous.zip
-
-    curl https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v1.0.0/piloted_zipchunk01 > piloted_zipchunk01
-    curl https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v1.0.0/piloted_zipchunk02 > piloted_zipchunk02
-    curl https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v1.0.0/piloted_zipchunk03 > piloted_zipchunk03
-    curl https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v1.0.0/piloted_zipchunk04 > piloted_zipchunk04
-    curl https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v1.0.0/piloted_zipchunk05 > piloted_zipchunk05
-    curl https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v1.0.0/piloted_zipchunk06 > piloted_zipchunk06
-    copy /B piloted_zipchunk* piloted.zip
-
-Unzip the downloaded files and then unzip the images and labels of each flight:
-
-    tar -xf autonomous.zip
-    tar -xf piloted.zip
-    cd autonomous
-    for /d %r in (*) do for %s in ("%r\*.zip") do tar -xf %s -C %~dps
-    cd ../piloted
-    for /d %r in (*) do for %s in ("%r\*.zip") do tar -xf %s -C %~dps
+    data_downloader.cmd
 
 
 ### Images and Labels usage
@@ -116,6 +79,8 @@ In each file ending with `cam_ts_sync.csv`, the timestamps are from the camera f
 If you want to use the raw data (which are not synchronized), you can use the CSVs in the `csv_raw` folder. Each CSV contains the data from a single source.
 
 ### ROS2 bags play
+Tested on October 2023 with **Ubuntu 20.04 LTS**
+
 The ROS2 bags are stored in the `ros2bag_{FLIGHT_NAME}` folder of each file. The rosbag is in sqlite3 format. A dump of the data is available in CSV format in the `csv_raw/ros2bag_{FLIGHT_NAME}` folder. The CSVs are named after the topic name.
 The rosbag contains topic with custom messages defined in the repository [drone-racing-msgs](https://github.com/Drone-Racing/drone-racing-msgs).
 
@@ -143,6 +108,8 @@ To play the rosbag you need to:
     ros2 topic echo sensors/imu
 
 ## Scripts Quick Start
+
+Tested on October 2023 with **Ubuntu 20.04 LTS** using Python 3.8, **macOS 14** using Python 3.11, **Windows 11** using Python 3.9
 
 ### 1) Download the repository
 
