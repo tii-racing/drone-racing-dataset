@@ -59,12 +59,13 @@ Use the provided script to download the dataset.
 ### Ubuntu and Mac OS
 Tested on October 2023 with **Ubuntu 20.04 LTS**, **macOS 14**
 
+    sudo chmod +x data_downloader.sh
     ./data_downloader.sh
 
 ### Windows
 Tested on October 2023 with **Windows 11**
 
-    data_downloader.cmd
+    double click on data_downloader.cmd
 
 
 ### Images and Labels usage
