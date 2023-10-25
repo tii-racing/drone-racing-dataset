@@ -41,7 +41,7 @@ sudo chmod +x data_downloader.sh
 ./data_downloader.sh
 ```
 
-On **Windows**, double click on file `drone-racing-dataset/data_downloader.cmd`
+On **Windows**, double click on file [`drone-racing-dataset/data_downloader.cmd`](/data_downloader.cmd)
 
 This will create and populate 2 folders in the root of the repository
 
@@ -101,7 +101,7 @@ All values are in pixel coordinates normalized with respect to image size. The k
 
 ## Visualization Scripts
 
-The scripts in the `scripts/` folder can be used to visualize the data and to convert the data to other formats.
+The scripts in the [`scripts/`](/scripts/) folder can be used to visualize the data and to convert the data to other formats.
 
 To plot one of the CSVs, for example, use
 
@@ -119,7 +119,7 @@ python3 ./label_visualization.py --flight flight-01a-ellipse
 
 ## FPV Racing Drone Open Design
 
-Folder `quadrotor/` contains the [bill of material](/quadrotor/bom.md) and [STL files](/quadrotor/3d_print/) of the COTS/open design of the racing drone used to collect the dataset.
+Folder [`quadrotor/`](/quadrotor/) contains the [bill of material](/quadrotor/bom.md) and [STL files](/quadrotor/3d_print/) of the COTS/open design of the racing drone used to collect the dataset.
 
 A tutorial to assemble the drone is on [YouTube](https://youtu.be/xvOS7IEFxlU).
 
