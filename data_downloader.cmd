@@ -1,6 +1,6 @@
 ::Download the dataset from the release section and reconstruct the zip files
 
-mkdir data && cd data
+mkdir -p data && cd data
 
 curl https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v1.0.0/autonomous_zipchunk01 > autonomous_zipchunk01
 curl https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v1.0.0/autonomous_zipchunk02 > autonomous_zipchunk02

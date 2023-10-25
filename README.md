@@ -1,28 +1,63 @@
-# Race Against the Machine: a Fully-annotated, Open-design Dataset of Autonomous and Piloted High-speed Flight
+# Race Against the Machine
 
-## Paper
-If you use this repo, please cite our paper:
+> A Fully-annotated, Open-design Dataset of Autonomous and Piloted High-speed Flight
 
-*Race Against the Machine: a Fully-annotated, Open-design
-Dataset of Autonomous and Piloted High-speed Flight* [[DOI](link)]
+This repository contains a dataset characterized by:
 
-```
+- fast (>20m/s) and aggressive quadrotor flight
+- autonomous and human-piloted flight, on multiple trajectories
+- high-resolution, high-frequency collection of visual, inertial, and motion capture data
+- it includes drone racing gates—with bounding boxes and individual corner labels
+- it includes control inputs and battery voltages
+
+If you use this repo, you can cite [the companion paper](https://arxiv.org/abs/) as:
+
+```bibtex
 @Article{
-    TODO
+    TBA
 }
 ```
-## Introduction
-Dataset for drone racing that is characterized by:
-- fast (>20m/s), aggressive flight
-- autonomous and human-piloted flights, on multiple trajectories
-- high-resolution, high-frequency collection of visual, inertial, and motion capture data
-- presence of drone racing gates fully labeled to the level of individual corners
-- includes commands, inputs, and battery voltages
 
+## Installation/Download
 
-### Data Preview
+Tested on October 2023 with **Ubuntu 20.04 LTS** (Python 3.8), **macOS 14** (Python 3.11), **Windows 11** (Python 3.9).
 
-Columns of the comprehensive synchronized CSVs:
+Clone the repository, initialize the submodules, and install the requirements:
+
+```sh
+git clone https://github.com/Drone-Racing/drone-racing-dataset.git
+cd drone-racing-dataset
+git submodule update --init
+pip3 install -r requirements.txt
+```
+
+From folder `drone-racing-dataset`, use the following scripts to download the dataset files.
+
+On **Ubuntu and macOS**:
+
+```sh
+sudo apt install wget   # or, e.g, `brew install wget` on macOS
+sudo chmod +x data_downloader.sh
+./data_downloader.sh
+```
+
+On **Windows**, double click on file `drone-racing-dataset/data_downloader.cmd`
+
+This will create and populate 2 folders in the root of the repository
+
+- `data/piloted/`
+- `data/autonomous/`
+
+Each of `data/piloted/` and `data/autonomous/` contains 12 `flight-.../` folders.
+
+## Data Format
+
+For each flight, 2 CSV files are provided
+
+- One sampled/interpolated at the timestamps of the camera frames (`..._cam_ts_sync.csv`)
+- One sampled/interpolated at 500Hz (`..._500hz_freq_sync.csv`)
+
+Each CSV file contains the following columns
 
 | Column Number and Quantity Name | Unit | Data Type |
 | --- | --- | --- |
@@ -47,119 +82,99 @@ Columns of the comprehensive synchronized CSVs:
 | 72. `gate[1-4]_int_rot[[0-8]]` | $1$ | float |
 | 108. `gate[1-4]_marker[1-4]_[x/y/z]` | $m$ | float |
 
-### Drone Design
+## Image Format
 
-The directory *quadrotor* contains the bill of material and STL files of the open design (with commercial off-the-shelf components) of the racing drone used to collect the data. In the BOM it's present a link to the tutorial to assemble the drone.
+For each flight, 2 folder contain the FPV camera capture data
 
-## Data Usage
-Data are provided in both CSV and ROS2 format.
+- `camera_flight-.../` contains the all the captured frame in JPEG format
+- `labels_flight-.../` contains the racing gates' bounding boxes and corner labels in the TXT format described below
 
-Use the provided script to download the dataset.
+### Labels Format
 
-### Ubuntu and Mac OS
-Tested on October 2023 with **Ubuntu 20.04 LTS**, **macOS 14**
+Each TXT file contains a line `0 cx cy w h tlx tly tlv trx try trv brx bry brv blx bly blv` where
 
-    sudo chmod +x data_downloader.sh
-    ./data_downloader.sh
+- *0* is the class label for a gate (the only class in our dataset)
+- *cx, cy , w, h ∈ [0, 1]* are its bounding box center’s coordinates, width, and height, respectively
+- *tlx, tly ∈ [0, 1], tlv ∈ [0; 2]* are the coordinates and visibility (0 outside the image boundaries; 2 inside the image boundaries) of the top-left internal corner. Similarly for *tr, bl, br*, the top-right, bottom-left, and bottom-right corners.
 
-### Windows
-Tested on October 2023 with **Windows 11**
+All values are in pixel coordinates normalized with respect to image size. The keypoints label format follows the COCO definition.
 
-    double click on data_downloader.cmd
+## Visualization Scripts
 
+The scripts in the `scripts/` folder can be used to visualize the data and to convert the data to other formats.
 
-### Images and Labels usage
-Each flight contains a folder with the images and a folder with the labels. The images are stored with path `{FLIGHT_NAME}/camera_{FLIGHT_NAME}/{IMG_NUM}_{TIMESTAMP}.jpg` and the labels with path `{FLIGHT_NAME}/labels_{FLIGHT_NAME}/{IMG_NUM}_{TIMESTAMP}.txt`. Each line in a TXT file represents a single gate in the form:
-`0 cx cy w h tlx tly tlv trx try trv brx bry brv blx bly blv` where _0_ is the class label for a gate (the only class in
-our dataset); _cx, cy , w, h ∈ [0, 1]_ are its bounding box center’s coordinates, width, and height, respectively; and _tlx, tly ∈ [0, 1], tlv ∈ [0; 2]_ are the coordinates and visibility (0 outside the image boundaries; 2 inside the image boundaries) of the top-left internal corner. Similarly for _tr, bl, br,_ the top-right, bottom-left, and bottom-right corners. All values are in pixel coordinates normalized with respect to image size. The keypoints label format follows the COCO definition.
+To plot one of the CSVs, for example, use
 
-### CSVs usage
-The easiest way to use the data is to use one of the two comprehensive files provided in the root of each flight (which has been created using the script _data_interpolation.py_), which contains the synchronized data from all the sources.
-In each file ending with `cam_ts_sync.csv`, the timestamps are from the camera frames, and all other data points are linearly interpolated to these timestamps. In each file ending with `500hz_freq_sync.csv`, timestamps are sampled at 500Hz frequency between the first and last camera timestamps and all other data points are linearly interpolated. In this case, each row references the file name of the camera frame with the closest timestamp.
+```sh
+cd scripts/
+python3 ./data_plotting.py --csv-file ../data/autonomous/flight-01a-ellipse/flight-01a-ellipse_cam_ts_sync.csv
+```
 
-If you want to use the raw data (which are not synchronized), you can use the CSVs in the `csv_raw` folder. Each CSV contains the data from a single source.
+To visualize the FPV camera frame and label, use (and press SPACE to advance, CTRL+C to exit), for example
 
-### ROS2 bags play
+```sh
+cd scripts/
+python3 ./label_visualization.py --flight flight-01a-ellipse
+```
+
+## FPV Racing Drone Open Design
+
+Folder `quadrotor/` contains the [bill of material](/quadrotor/bom.md) and [STL files](/quadrotor/3d_print/) of the COTS/open design of the racing drone used to collect the dataset.
+
+A tutorial to assemble the drone is on [YouTube](https://youtu.be/xvOS7IEFxlU).
+
+## ROS2 Bags
+
 Tested on October 2023 with **Ubuntu 20.04 LTS**
 
-The ROS2 bags are stored in the `ros2bag_{FLIGHT_NAME}` folder of each file. The rosbag is in sqlite3 format. A dump of the data is available in CSV format in the `csv_raw/ros2bag_{FLIGHT_NAME}` folder. The CSVs are named after the topic name.
-The rosbag contains topic with custom messages defined in the repository [drone-racing-msgs](https://github.com/Drone-Racing/drone-racing-msgs).
+ROS2 `.sqlite3` bags are stored in the `ros2bag_.../` folder of each flight.
 
-To play the rosbag you need to:
+The rosbags contain topic with custom messages defined in the repository [drone-racing-msgs](https://github.com/Drone-Racing/drone-racing-msgs).
 
-#### 1) Install ROS2 Humble following the [official guide](https://docs.ros.org/en/humble/Installation.html).
-#### 2) Install the custom messages defined in the repository [drone-racing-msgs](https://github.com/Drone-Racing/drone-racing-msgs).
+To play a rosbag
 
-    mkdir -p ~/drone_racing_ws/src
-    cd ~/drone_racing_ws/src
-    git clone https://github.com/Drone-Racing/drone-racing-msgs.git
-    cd ..
-    rosdep install --from-paths src --ignore-src -r -y
-    colcon build --symlink-install
+- Install ROS2 Humble following the [official guide](https://docs.ros.org/en/humble/Installation.html)
+- Install the custom messages defined in the repository [drone-racing-msgs](https://github.com/Drone-Racing/drone-racing-msgs)
 
-#### 3) Source the ROS2 workspace and Play the rosbag
+```sh
+mkdir -p ~/drone_racing_ws/src
+cd ~/drone_racing_ws/src
+git clone https://github.com/Drone-Racing/drone-racing-msgs.git
+cd ..
+rosdep install --from-paths src --ignore-src -r -y
+colcon build --symlink-install
+```
 
-    source ~/drone_racing_ws/install/setup.bash
-    ros2 bag play data/autonomous/flight-01a-ellipse/ros2bag_flight-01a-ellipse
+- Source the ROS2 workspace and play the rosbag
 
-#### 4) Print the topic list and echo a topic
+```sh
+source ~/drone_racing_ws/install/setup.bash
+ros2 bag play data/autonomous/flight-01a-ellipse/ros2bag_flight-01a-ellipse
+```
 
-    source ~/drone_racing_ws/install/setup.bash
-    ros2 topic list
-    ros2 topic echo sensors/imu
+- Print the topic list and echo a topic
 
-## Scripts Quick Start
+```sh
+source ~/drone_racing_ws/install/setup.bash
+ros2 topic list
+ros2 topic echo sensors/imu
+```
 
-Tested on October 2023 with **Ubuntu 20.04 LTS** using Python 3.8, **macOS 14** using Python 3.11, **Windows 11** using Python 3.9
+## Additional Resources
 
-### 1) Download the repository
-
-    git clone https://github.com/Drone-Racing/drone-racing-dataset.git
-    cd drone-racing-dataset
-    git submodule update --init
-
-### 2) Install requirements
-
-    pip install -r requirements.txt
-
-### 3) Download the datasets
-
-Follow the instructions in the [Data Usage](#data-usage) section, creating the `data` folder in the root of the repository.
-
-### 4) Run one of the scripts
-
-    cd ../scripts
-
-#### 4.1) Data interpolation
-
-    python3 data_interpolation.py --flight flight-01a-ellipse
-
-#### 4.2) Data visualization 
-Available subplots: '3d', 'accel', 'gyro', 'thrust', 'vbat', 'position', 'rotation', 'channels'.
-Default: all.
-
-    python3 data_plotting.py --csv-file ../data/autonomous/flight-01a-ellipse/flight-01a-ellipse_cam_ts_sync.csv --subplots 3d accel gyro
-
-#### 4.3) Label visualization
-
-    python3 label_visualization.py --flight flight-01a-ellipse
-
-#### 4.4) Standard bag creation
-You need to have the ROS2 workspace with the custom messages installed (see [ROS2 bags play](#ros2-bags-play)).
-
-    source ~/drone_racing_ws/install/setup.bash
-    python3 create_std_bag.py --flight flight-01a-ellipse
-
-## Resources
-- *camera_calibration*:
-    - *calibration_results.json* Camera parameters of the camera used in the dataset in json format.
-    - *calibration_results.npz* Camera parameters of the camera used in the dataset in numpy format.
-    - *drone_to_camera.json* Translation from the drone center to the camera in json format.
-- *drone_racing_msgs*: Custom ROS2 messages used in the dataset.
-- *quadrotor*: Bill of materials and STL files of the quadrotor used in the dataset.
-- *scripts*: Python scripts to visualize and convert the data.
-    - *reference_controller.py*: Python code that mimic the reference controller used for the autonomous control of the quadrotor.
-    - *camera_calibration.py*: Script used to generate the files under camera_calibration.
+```sh
+drone-racing-dataset
+├── camera_calibration
+│   ├── calibration_results.json - Camera parameters in JSON format.
+│   ├── calibration_results.npz - Camera parameters in NumPy format.
+│   └── drone_to_camera.json - Translation from the drone center to the camera in JSON format.
+├── ...
+└── scripts
+    ├── camera_calibration.py - Script used to generate the files in `camera_calibration/`.
+    ├── ...
+    └── reference_controller.py - Python implementation of the PID controller used for the autonomous flights.
+```
 
 ## License
+
 The dataset and the code are released under the [MIT license](LICENSE).

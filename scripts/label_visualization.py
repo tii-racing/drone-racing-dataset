@@ -15,6 +15,7 @@ def signal_handler(_, __):
 
 signal.signal(signal.SIGINT, signal_handler)
 
+plt.rcParams['keymap.quit'].append(' ')
 
 def show_labels(flight):
     flight_type = "piloted" if "p-" in args.flight else "autonomous"
@@ -25,7 +26,7 @@ def show_labels(flight):
     colors = ["r", "g", "b", "y"]
     keypoint_colors = ["yellow", "lime", "cyan", "magenta"]
 
-    for image in images:
+    for idx, image in enumerate(images):
         with open(os.path.join(label_path, os.path.basename(image).split(".")[0] + ".txt"), "r") as txt:  # read Yolo label in txt format
             img = Image.open(image)  # read the target image
             plt.imshow(img)
@@ -53,6 +54,7 @@ def show_labels(flight):
                     color = keypoint_colors[kp_index] if kp[2] == 2 else "w"
                     plt.scatter(x, y, marker="o", color=color, s=18)
 
+            plt.title('Frame ' + str(idx) + ' (press SPACE to advance)')
             plt.axis('off')  # Turn off axis ticks and labels
             plt.show()
 
