@@ -97,7 +97,7 @@ Each TXT file contains a line `0 cx cy w h tlx tly tlv trx try trv brx bry brv b
 - *cx, cy , w, h ∈ [0, 1]* are its bounding box center’s coordinates, width, and height, respectively
 - *tlx, tly ∈ [0, 1], tlv ∈ [0; 2]* are the coordinates and visibility (0 outside the image boundaries; 2 inside the image boundaries) of the top-left internal corner. Similarly for *tr, bl, br*, the top-right, bottom-left, and bottom-right corners.
 
-All values are in pixel coordinates normalized with respect to image size. The keypoints label format follows the COCO definition.
+> All values are in pixel coordinates normalized with respect to image size. The keypoints label format follows the COCO definition.
 
 ## Visualization Scripts
 
@@ -120,7 +120,6 @@ python3 ./label_visualization.py --flight flight-01a-ellipse
 ## FPV Racing Drone Open Design
 
 Folder [`quadrotor/`](/quadrotor/) contains the [bill of material](/quadrotor/bom.md) and [STL files](/quadrotor/3d_print/) of the COTS/open design of the racing drone used to collect the dataset.
-
 A tutorial to assemble the drone is on [YouTube](https://youtu.be/xvOS7IEFxlU).
 
 ## ROS2 Bags
