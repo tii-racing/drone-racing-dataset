@@ -131,8 +131,6 @@ def main():
 # Syncing Dataframes
 #####################
 
-    print("_______________________")
-
     final_csv_name = args.flight
 
     if args.sync_option == 2:
