@@ -22,12 +22,11 @@ If you use this repo, you can cite [the companion paper](https://arxiv.org/abs/)
 
 Tested on October 2023 with **Ubuntu 20.04 LTS** (Python 3.8), **macOS 14** (Python 3.11), **Windows 11** (Python 3.9).
 
-Clone the repository, initialize the submodules, and install the requirements:
+Clone the repository and install the requirements:
 
 ```sh
 git clone https://github.com/Drone-Racing/drone-racing-dataset.git
 cd drone-racing-dataset
-git submodule update --init
 pip3 install -r requirements.txt
 ```
 
@@ -84,7 +83,7 @@ Each CSV file contains the following columns
 
 ## Image Format
 
-For each flight, 2 folder contain the FPV camera capture data
+For each flight, 2 folder contain the Arducam capture data
 
 - `camera_flight-.../` contains the all the captured frame in JPEG format
 - `labels_flight-.../` contains the racing gates' bounding boxes and corner labels in the TXT format described below
@@ -110,7 +109,7 @@ cd scripts/
 python3 ./data_plotting.py --csv-file ../data/autonomous/flight-01a-ellipse/flight-01a-ellipse_cam_ts_sync.csv
 ```
 
-To visualize the FPV camera frame and label, use (and press SPACE to advance, CTRL+C to exit), for example
+To visualize the Arducam frame and label, use (and press SPACE to advance, CTRL+C to exit), for example
 
 ```sh
 cd scripts/
@@ -170,6 +169,10 @@ drone-racing-dataset
 ├── ...
 └── scripts
     ├── camera_calibration.py - Script used to generate the files in `camera_calibration/`.
+    ├── create_std_bag.py - Script used to generate ROS2 bags with Image, Imu, and PoseStamped messages. 
+    ├                       Standard bags are not provided in the dataset as they weight 10th of GBs for each flight.
+    ├                       You need the ROS2 workspace with the custom messages installed (see ROS2 bags play).
+    ├── data_interpolation.py - Script used to generate the comprehensive CSV files interpolated at the chosen frequency.
     ├── ...
     └── reference_controller.py - Python implementation of the PID controller used for the autonomous flights.
 ```
