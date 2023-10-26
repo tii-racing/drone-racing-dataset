@@ -30,7 +30,7 @@ cd drone-racing-dataset
 pip3 install -r requirements.txt
 ```
 
-From folder `drone-racing-dataset`, use the following scripts to download the dataset files.
+From folder `drone-racing-dataset/`, use the following scripts to download the dataset files.
 
 On **Ubuntu and macOS**:
 
@@ -42,7 +42,7 @@ sudo chmod +x data_downloader.sh
 
 On **Windows**, double click on file [`drone-racing-dataset/data_downloader.cmd`](/data_downloader.cmd)
 
-This will create and populate 2 folders in the root of the repository
+This will create and populate 2 folders in the root of the repository:
 
 - `data/piloted/`
 - `data/autonomous/`
@@ -51,12 +51,12 @@ Each of `data/piloted/` and `data/autonomous/` contains 12 `flight-.../` folders
 
 ## Data Format
 
-For each flight, 2 CSV files are provided
+For each flight, 2 CSV files are provided:
 
 - One sampled/interpolated at the timestamps of the camera frames (`..._cam_ts_sync.csv`)
 - One sampled/interpolated at 500Hz (`..._500hz_freq_sync.csv`)
 
-Each CSV file contains the following columns
+Each CSV file contains the following columns:
 
 | Column Number and Quantity Name | Unit | Data Type |
 | --- | --- | --- |
@@ -83,33 +83,33 @@ Each CSV file contains the following columns
 
 ## Image Format
 
-For each flight, 2 folder contain the Arducam capture data
+For each flight, 2 folders contain the Arducam video capture data:
 
-- `camera_flight-.../` contains the all the captured frame in JPEG format
+- `camera_flight-.../` contains all the captured frame in JPEG format
 - `labels_flight-.../` contains the racing gates' bounding boxes and corner labels in the TXT format described below
 
 ### Labels Format
 
-Each TXT file contains a line `0 cx cy w h tlx tly tlv trx try trv brx bry brv blx bly blv` where
+Each TXT file contains lines in the form `0 cx cy w h tlx tly tlv trx try trv brx bry brv blx bly blv` where:
 
 - *0* is the class label for a gate (the only class in our dataset)
-- *cx, cy , w, h ∈ [0, 1]* are its bounding box center’s coordinates, width, and height, respectively
+- *cx, cy , w, h ∈ [0, 1]* are a gate's bounding box center’s coordinates, width, and height, respectively
 - *tlx, tly ∈ [0, 1], tlv ∈ [0; 2]* are the coordinates and visibility (0 outside the image boundaries; 2 inside the image boundaries) of the top-left internal corner. Similarly for *tr, bl, br*, the top-right, bottom-left, and bottom-right corners.
 
-> All values are in pixel coordinates normalized with respect to image size. The keypoints label format follows the COCO definition.
+> All values are in pixel coordinates normalized with respect to image size. The keypoints label format follows the COCO definition. The gates/lines in each TXT file are not ordered.
 
 ## Visualization Scripts
 
 The scripts in the [`scripts/`](/scripts/) folder can be used to visualize the data and to convert the data to other formats.
 
-To plot one of the CSVs, for example, use
+To plot one of the CSVs, for example, use:
 
 ```sh
 cd scripts/
 python3 ./data_plotting.py --csv-file ../data/autonomous/flight-01a-ellipse/flight-01a-ellipse_cam_ts_sync.csv
 ```
 
-To visualize the Arducam frame and label, use (and press SPACE to advance, CTRL+C to exit), for example
+To visualize the Arducam frames and labels, use (press SPACE to advance, CTRL+C to exit), for example:
 
 ```sh
 cd scripts/
@@ -129,10 +129,10 @@ ROS2 `.sqlite3` bags are stored in the `ros2bag_.../` folder of each flight.
 
 The rosbags contain topic with custom messages defined in the repository [drone-racing-msgs](https://github.com/Drone-Racing/drone-racing-msgs).
 
-To play a rosbag
+To play a rosbag:
 
 - Install ROS2 Humble following the [official guide](https://docs.ros.org/en/humble/Installation.html)
-- Install the custom messages defined in the repository [drone-racing-msgs](https://github.com/Drone-Racing/drone-racing-msgs)
+- Install the custom messages defined in [drone-racing-msgs](https://github.com/Drone-Racing/drone-racing-msgs)
 
 ```sh
 mkdir -p ~/drone_racing_ws/src
@@ -169,10 +169,10 @@ drone-racing-dataset
 ├── ...
 └── scripts
     ├── camera_calibration.py - Script used to generate the files in `camera_calibration/`.
-    ├── create_std_bag.py - Script used to generate ROS2 bags with Image, Imu, and PoseStamped messages. 
-    ├                       Standard bags are not provided in the dataset as they weight 10th of GBs for each flight.
-    ├                       You need the ROS2 workspace with the custom messages installed (see ROS2 bags play).
-    ├── data_interpolation.py - Script used to generate the comprehensive CSV files interpolated at the chosen frequency.
+    ├── create_std_bag.py - Script used to generate standard ROS2 bags with `Image`, `Imu`, and `PoseStamped` messages. 
+    │                       Standard bags are not provided in the dataset because of their size (>10GB each).
+    │                       You will need the ROS2 workspace with the custom messages installed (see section "ROS2 Bags").
+    ├── data_interpolation.py - Script used to generate the comprehensive CSV files interpolated at arbitrary frequencies.
     ├── ...
     └── reference_controller.py - Python implementation of the PID controller used for the autonomous flights.
 ```
