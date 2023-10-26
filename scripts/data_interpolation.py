@@ -94,6 +94,8 @@ def calc_angular_velocity(rotation_matrix, last_rotation_matrix, dt):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--flight', required=True, help="Flight ID (e.g., flight-01p-ellipse)")
+    parser.add_argument('--sync-option', choices=[1, 2], default=1, type=int, help="Sync type (1: freq_sync or 2: cam_ts_sync)")
+    parser.add_argument('--freq', default=500, type=int, help="Frequency for sync type 1 (freq_sync)")
     args = parser.parse_args()
 
     print("Loading and pre-processing CSVs...")
@@ -130,26 +132,22 @@ def main():
 #####################
 
     print("_______________________")
-    print("Sync Options:")
-    print("A: Use camera timestamps and interpolate other data")
-    print("B: Choose a frequency and interpolate all data")
-
-    sync_option = input("Select a sync option (A/B): ")
 
     final_csv_name = args.flight
 
-    if sync_option == "A":
+    if args.sync_option == 2:
+        print("Using camera timestamps to interpolate other data")
         reference_df = camera_df
         dfs_to_sync = [imu_df, thrust_df, channels_df, battery_df, mocap_df, gate_corners_df]
         final_csv_name += '_cam_ts_sync'
-    elif sync_option == "B":
-        frequency = int(input("Enter the desired frequency [hz]: "))
+    elif args.sync_option == 1:
+        print("Using frequency " + str(args.freq) + " to interpolate all data")
         first_timestamp = camera_df['timestamp'].iloc[0]
         last_timestamp = camera_df['timestamp'].iloc[-1]
-        target_timestamps = np.arange(first_timestamp, last_timestamp, 1.0 / frequency * 1000000, dtype=np.ulonglong)
+        target_timestamps = np.arange(first_timestamp, last_timestamp, 1.0 / args.freq * 1000000, dtype=np.ulonglong)
         reference_df = pd.DataFrame({'timestamp': target_timestamps})
         dfs_to_sync = [imu_df, thrust_df, channels_df, battery_df, mocap_df, gate_corners_df]
-        final_csv_name += "_" + str(frequency) + 'hz_freq_sync'
+        final_csv_name += "_" + str(args.freq) + 'hz_freq_sync'
     else:
         print("Invalid sync option. Exiting.")
         return
@@ -159,7 +157,7 @@ def main():
     synchronized_dfs[2] = synchronized_dfs[2].astype('int') # channels should be integers
     print("Sync complete.")
 
-    if sync_option == "B":
+    if args.sync_option == 2:
         print("Interpolating camera data...")
         camera_df['timestamp'] = camera_df['timestamp'].astype('uint64')
         reference_df = pd.merge_asof(reference_df, camera_df, on='timestamp', direction='nearest')
