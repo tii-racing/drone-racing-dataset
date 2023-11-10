@@ -137,12 +137,12 @@ The rosbags contain topic with custom messages defined in the repository [drone-
 To play a rosbag:
 
 - Install ROS2 Humble following the [official guide](https://docs.ros.org/en/humble/Installation.html)
-- Install the custom messages defined in [drone-racing-msgs](https://github.com/Drone-Racing/drone-racing-msgs)
+- Install the custom messages defined in [drone-racing-msgs](https://github.com/tii-racing/drone-racing-msgs)
 
 ```sh
 mkdir -p ~/drone_racing_ws/src
 cd ~/drone_racing_ws/src
-git clone https://github.com/Drone-Racing/drone-racing-msgs.git
+git clone https://github.com/tii-racing/drone-racing-msgs.git
 cd ..
 rosdep install --from-paths src --ignore-src -r -y
 colcon build --symlink-install
