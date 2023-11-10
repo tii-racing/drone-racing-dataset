@@ -132,7 +132,7 @@ Tested on October 2023 with **Ubuntu 20.04 LTS**
 
 ROS2 `.sqlite3` bags are stored in the `ros2bag_.../` folder of each flight.
 
-The rosbags contain topic with custom messages defined in the repository [drone-racing-msgs](https://github.com/Drone-Racing/drone-racing-msgs).
+The rosbags contain topic with custom messages defined in the repository [drone-racing-msgs](https://github.com/tii-racing/drone-racing-msgs).
 
 To play a rosbag:
 
