@@ -123,7 +123,7 @@ python3 ./label_visualization.py --flight flight-01a-ellipse
 
 ## FPV Racing Drone Open Design
 
-Folder [`quadrotor/`](/quadrotor/) contains the [bill of material](/quadrotor/bom.md) and [STL files](/quadrotor/3d_print/) of the COTS/open design of the racing drone used to collect the dataset.
+Folder [`quadrotor/`](/quadrotor/) contains the [bill of material](/quadrotor/bom.md) and [STL files](/quadrotor/3d_print/) of the COTS/open design of the racing drone used to collect the dataset. In the same folder, you can also find the [Betaflight parameters backup](/quadrotor/BTFL_cli_backup.txt) used to configure the drone.
 A tutorial to assemble the drone is on [YouTube](https://youtu.be/xvOS7IEFxlU).
 
 ## ROS2 Bags

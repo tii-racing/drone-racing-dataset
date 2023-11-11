@@ -1,0 +1,124 @@
+# version
+# Betaflight / STM32H743 (SH74) 4.3.1 MSP API: 1.44
+# config: manufacturer_id: HBRO, board_name: KAKUTEH7 5''
+
+# start the command batch
+batch start
+
+board_name KAKUTEH7
+manufacturer_id HBRO
+mcu_id 004c00203131510134313931
+signature 
+
+# feature
+feature -TELEMETRY
+feature -RX_PARALLEL_PWM
+
+# serial
+serial 0 0 115200 57600 0 115200
+serial 1 0 115200 57600 0 115200
+serial 3 1 1000000 57600 0 115200
+serial 6 0 115200 57600 0 115200
+
+# beacon
+beacon RX_LOST
+beacon RX_SET
+
+# aux
+aux 0 0 0 1300 1700 0 0
+aux 1 1 1 1300 1700 0 0
+aux 2 2 1 1700 2100 0 0
+aux 3 13 2 1700 2100 0 0
+aux 4 36 2 1700 2100 0 0
+aux 5 50 3 1300 1700 0 0
+
+# master
+set dyn_notch_count = 1
+set dyn_notch_q = 500
+set mag_hardware = NONE
+set rc_smoothing_auto_factor = 25
+set rc_smoothing_auto_factor_throttle = 25
+set serialrx_provider = CRSF
+set msp_override_channels_mask = 15
+set blackbox_sample_rate = 1/2
+set dshot_bidir = ON
+set motor_pwm_protocol = DSHOT600
+set align_board_roll = 180
+set bat_capacity = 1400
+set vbat_scale = 77
+set vbat_divider = 7
+set ibata_scale = 660
+set ibata_offset = -300
+set ibatv_scale = 1
+set beeper_dshot_beacon_tone = 3
+set serial_update_rate_hz = 2000
+set small_angle = 180
+set debug_mode = GYRO_SCALED
+
+profile 0
+
+# profile 0
+set vbat_sag_compensation = 100
+set p_pitch = 75
+set i_pitch = 81
+set d_pitch = 47
+set f_pitch = 0
+set p_roll = 63
+set i_roll = 67
+set d_roll = 46
+set f_roll = 0
+set p_yaw = 63
+set i_yaw = 67
+set f_yaw = 0
+set d_min_roll = 46
+set d_min_pitch = 47
+set thrust_linear = 30
+set feedforward_averaging = 3_POINT
+set feedforward_jitter_factor = 5
+set simplified_master_multiplier = 140
+set simplified_i_gain = 60
+set simplified_d_gain = 110
+set simplified_dmax_gain = 0
+set simplified_feedforward_gain = 0
+set simplified_pitch_d_gain = 90
+set simplified_pitch_pi_gain = 115
+
+profile 1
+
+profile 2
+
+# restore original profile selection
+profile 0
+
+rateprofile 0
+
+# rateprofile 0
+set rates_type = BETAFLIGHT
+set roll_rc_rate = 80
+set pitch_rc_rate = 80
+set yaw_rc_rate = 80
+set roll_srate = 70
+set pitch_srate = 70
+set yaw_srate = 70
+
+rateprofile 1
+
+# rateprofile 1
+set rates_type = BETAFLIGHT
+set roll_rc_rate = 202
+set pitch_rc_rate = 202
+set yaw_rc_rate = 202
+set roll_srate = 0
+set pitch_srate = 0
+set yaw_srate = 0
+
+rateprofile 2
+
+rateprofile 3
+
+# restore original rateprofile selection
+rateprofile 1
+
+# save configuration
+save
+# 
