@@ -27,10 +27,11 @@ def show_labels(flight):
     keypoint_colors = ["yellow", "lime", "cyan", "magenta"]
 
     for idx, image in enumerate(images):
-        with open(os.path.join(label_path, os.path.basename(image).split(".")[0] + ".txt"), "r") as txt:  # read Yolo label in txt format
-            img = Image.open(image)  # read the target image
-            plt.imshow(img)
+        img = Image.open(image)  # read the target image
+        plt.imshow(img)
 
+        try:
+            txt = open(os.path.join(label_path, os.path.basename(image).split(".")[0] + ".txt"), "r")  # read Yolo label in txt format
             for index, label in enumerate(txt.readlines()):
                 values = label.split(" ")
 
@@ -53,10 +54,13 @@ def show_labels(flight):
                     # non-visible corners are draw in white.
                     color = keypoint_colors[kp_index] if kp[2] == 2 else "w"
                     plt.scatter(x, y, marker="o", color=color, s=18)
+            txt.close()
+        except:
+            pass
 
-            plt.title('Frame ' + str(idx) + ' (press SPACE to advance)')
-            plt.axis('off')  # Turn off axis ticks and labels
-            plt.show()
+        plt.title('Frame ' + str(idx) + ' (press SPACE to advance)')
+        plt.axis('off')  # Turn off axis ticks and labels
+        plt.show()
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
