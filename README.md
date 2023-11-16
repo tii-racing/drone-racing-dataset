@@ -2,6 +2,8 @@
 
 > A Fully-annotated, Open-design Dataset of Autonomous and Piloted High-speed Flight
 
+https://github.com/tii-racing/drone-racing-dataset/assets/14661511/5a5623d3-a15d-4ec0-bd92-1bf1bcbc393f
+
 This repository contains a dataset characterized by:
 
 - fast (>20m/s) and aggressive quadrotor flight
