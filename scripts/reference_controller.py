@@ -4,9 +4,9 @@ from transforms3d.utils import normalized_vector
 
 
 def ctbr_controller(tar_pos, tar_vel, tar_acc, cur_pos, cur_vel, cur_att):
-    K_P = np.array([3., 3., 8.])
-    K_D = np.array([2.5, 2.5, 5.])
-    K_RATES = np.array([5., 5., 1.])
+    K_P = np.array([2.8, 2.8, 14.])
+    K_D = np.array([6., 6., 8.])
+    K_RATES = np.array([7., 7., 8.])
     G = np.array([.0, .0, -9.8])
     FF = .4
     P = tar_pos - cur_pos
