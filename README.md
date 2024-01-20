@@ -6,7 +6,7 @@ https://github.com/tii-racing/drone-racing-dataset/assets/14661511/5a5623d3-a15d
 
 This repository contains a dataset characterized by:
 
-- fast (>20m/s) and aggressive quadrotor flight
+- fast (>21m/s) and aggressive quadrotor flight
 - autonomous and human-piloted flight, on multiple trajectories
 - high-resolution, high-frequency collection of visual, inertial, and motion capture data
 - it includes drone racing gates—with bounding boxes and individual corner labels
@@ -47,14 +47,14 @@ sudo chmod +x data_downloader.sh
 ./data_downloader.sh
 ```
 
-On **Windows**, double click on file [`drone-racing-dataset/data_downloader.cmd`](/data_downloader.cmd)
+On **Windows**, double-click on file [`drone-racing-dataset/data_downloader.cmd`](/data_downloader.cmd)
 
 This will create and populate 2 folders in the root of the repository:
 
 - `data/piloted/`
 - `data/autonomous/`
 
-Each of `data/piloted/` and `data/autonomous/` contains 12 `flight-.../` folders.
+`data/piloted/` and `data/autonomous/` contain 12 and 18 `flight-.../` folders respectively.
 
 ## Data Format
 
@@ -170,17 +170,24 @@ ros2 topic echo sensors/imu
 ```sh
 drone-racing-dataset
 ├── camera_calibration
-│   ├── calibration_results.json - Camera parameters in JSON format.
-│   ├── calibration_results.npz - Camera parameters in NumPy format.
+│   ├── calibration_results_trackRATM.json - Camera parameters of trackRATM flights in JSON format.
+│   ├── calibration_results_trackRATM.npz - Camera parameters of trackRATM flights in NumPy format.
+│   ├── calibration_results.json - Camera parameters of ellipse and lemniscate flights in JSON format.
+│   ├── calibration_results.npz - Camera parameters of ellipse and lemniscate flights in NumPy format.
 │   └── drone_to_camera.json - Translation from the drone center to the camera in JSON format.
 ├── ...
 └── scripts
+    ├── trajectory_generation
+    │   ├── ellipse.py - Script used to generate the trajectories of autonomous ellipse flights.
+    │   ├── lemniscate.py - Script used to generate the trajectories of autonomous lemniscate flights.
+    │   ├── trajectory.py - Base class for trajectory generation.
     ├── camera_calibration.py - Script used to generate the files in `camera_calibration/`.
     ├── create_std_bag.py - Script used to generate standard ROS2 bags with `Image`, `Imu`, and `PoseStamped` messages. 
     │                       Standard bags are not provided in the dataset because of their size (>10GB each).
     │                       You will need the ROS2 workspace with the custom messages installed (see section "ROS2 Bags").
     ├── data_interpolation.py - Script used to generate the comprehensive CSV files interpolated at arbitrary frequencies.
     ├── ...
+    ├── measure_dtw.py - Script used to measure the DTW distance between trajectories of same mode and shape.
     └── reference_controller.py - Python implementation of the PID controller used for the autonomous flights.
 ```
 

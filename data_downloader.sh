@@ -2,17 +2,18 @@
 
 mkdir -p data && cd data
 
-wget https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v1.0.0/autonomous_zipchunk01
-wget https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v1.0.0/autonomous_zipchunk02
+wget https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v2.0.0/autonomous_zipchunk01
+wget https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v2.0.0/autonomous_zipchunk02
+wget https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v2.0.0/autonomous_zipchunk03
 cat autonomous_zipchunk* > autonomous.zip
 rm autonomous_zipchunk*
 
-wget https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v1.0.0/piloted_zipchunk01
-wget https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v1.0.0/piloted_zipchunk02
-wget https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v1.0.0/piloted_zipchunk03
-wget https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v1.0.0/piloted_zipchunk04
-wget https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v1.0.0/piloted_zipchunk05
-wget https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v1.0.0/piloted_zipchunk06
+wget https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v2.0.0/piloted_zipchunk01
+wget https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v2.0.0/piloted_zipchunk02
+wget https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v2.0.0/piloted_zipchunk03
+wget https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v2.0.0/piloted_zipchunk04
+wget https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v2.0.0/piloted_zipchunk05
+wget https://github.com/Drone-Racing/drone-racing-dataset/releases/download/v2.0.0/piloted_zipchunk06
 cat piloted_zipchunk* > piloted.zip
 rm piloted_zipchunk*
 
