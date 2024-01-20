@@ -2,7 +2,7 @@
 
 > A Fully-annotated, Open-design Dataset of Autonomous and Piloted High-speed Flight
 
-https://github.com/tii-racing/drone-racing-dataset/assets/14661511/5a5623d3-a15d-4ec0-bd92-1bf1bcbc393f
+https://github.com/tii-racing/drone-racing-dataset/assets/14661511/ead6d6d2-0307-4e31-bcef-8b17c8cdf961
 
 This repository contains a dataset characterized by:
 
