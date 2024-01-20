@@ -56,6 +56,8 @@ def plot_data(df, subplots):
         ax.xaxis.labelpad=25
         if 'gate1_marker1_x' in df.columns:
             gate_markers = ['gate1', 'gate2', 'gate3', 'gate4']
+            if 'gate5_marker1_x' in df.columns:
+                gate_markers += ['gate5', 'gate6', 'gate7']
             for gate in gate_markers:
                 # Extract coordinates for each marker for the first time instance
                 points = np.array([[df.loc[0, f'{gate}_marker{i}_x'], 
