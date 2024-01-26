@@ -78,7 +78,7 @@ Each CSV file contains the following columns:
 | 21. `vbat` | $V$ | float |
 | 22. `drone_[x/y/z]` | $m$ | float |
 | 25. `drone_[roll/pitch/yaw]` | $rad$ | float |
-| 28. `drone_velocity_linear_[x/y/z]` | $m/s^2$ | float |
+| 28. `drone_velocity_linear_[x/y/z]` | $m/s$ | float |
 | 31. `drone_velocity_angular_[x/y/z]` | $rad/s$ | float |
 | 34. `drone_residual` | $m$ | float |
 | 35. `drone_rot[[0-8]]` | $1$ | float |
