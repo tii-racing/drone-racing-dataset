@@ -23,7 +23,7 @@ def show_labels(flight):
     label_path = os.path.join("..", "data", flight_type, flight, "label_" + flight + "/")
 
     images = sorted(glob(image_path + "*"))
-    colors = ["r", "g", "b", "y"]
+    colors = ["red", "green", "blue", "gold", "purple", "teal", "orange"]
     keypoint_colors = ["yellow", "lime", "cyan", "magenta"]
 
     for idx, image in enumerate(images):
