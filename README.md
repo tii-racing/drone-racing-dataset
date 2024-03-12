@@ -12,16 +12,18 @@ This repository contains a dataset characterized by:
 - it includes drone racing gates—with bounding boxes and individual corner labels
 - it includes control inputs and battery voltages
 
-If you use this repo, you can cite [the companion paper](https://arxiv.org/abs/2311.02667) as:
+If you use this repo, you can cite [the companion paper](https://ieeexplore.ieee.org/document/10452776) as:
 
 ```bibtex
-@misc{bosello2023race,
-      title={Race Against the Machine: a Fully-annotated, Open-design Dataset of Autonomous and Piloted High-speed Flight}, 
-      author={Michael Bosello and Davide Aguiari and Yvo Keuter and Enrico Pallotta and Sara Kiade and Gyordan Caminati and Flavio Pinzarrone and Junaid Halepota and Jacopo Panerati and Giovanni Pau},
-      year={2023},
-      eprint={2311.02667},
-      archivePrefix={arXiv},
-      primaryClass={cs.RO}
+@ARTICLE{10452776,
+         author={Bosello, Michael and Aguiari, Davide and Keuter, Yvo and Pallotta, Enrico and Kiade, Sara and Caminati, Gyordan and Pinzarrone, Flavio and Halepota, Junaid and Panerati, Jacopo and Pau, Giovanni},
+         journal={IEEE Robotics and Automation Letters}, 
+         title={Race Against the Machine: A Fully-Annotated, Open-Design Dataset of Autonomous and Piloted High-Speed Flight}, 
+         year={2024},
+         volume={9},
+         number={4},
+         pages={3799-3806},
+         doi={10.1109/LRA.2024.3371288}
 }
 ```
 
