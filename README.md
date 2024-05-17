@@ -176,7 +176,7 @@ drone-racing-dataset
 │   ├── calibration_results_trackRATM.npz - Camera parameters of trackRATM flights in NumPy format.
 │   ├── calibration_results.json - Camera parameters of ellipse and lemniscate flights in JSON format.
 │   ├── calibration_results.npz - Camera parameters of ellipse and lemniscate flights in NumPy format.
-│   └── drone_to_camera.json - Drone to camera in JSON format. Translation was measured by MoCap, rotation is an estimation.
+│   └── drone_to_camera.json - Drone to camera in JSON format. Translation was measured by MoCap, rotation is an estimation, and includes the FLU to RDF conversion.
 ├── ...
 └── scripts
     ├── trajectory_generation
