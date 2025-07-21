@@ -50,11 +50,11 @@ def main(args):
     print("Distortion Coefficients:\n", dist)
 
     # Save calibration results to a file
-    print("Saving camera matrix and distortion coefficients into camera/calibration_results.npz")
-    np.savez("camera/calibration_results.npz", mtx=mtx, dist=dist)
+    print("Saving camera matrix and distortion coefficients into camera_calibration/calib.npz")
+    np.savez("../camera_calibration/calib.npz", mtx=mtx, dist=dist)
 
-    print("Saving also in json file camera/calibration_results.json")
-    with open("camera/calibration_results.json", "w") as f:
+    print("Saving also in json file camera_calibration/calib.json")
+    with open("../camera_calibration/calib.json", "w") as f:
         output = {
             'mtx': np.array(mtx).tolist(),
             'dist': np.array(dist).tolist()

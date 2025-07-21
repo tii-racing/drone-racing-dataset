@@ -56,7 +56,7 @@ This will create and populate 2 folders in the root of the repository:
 - `data/piloted/`
 - `data/autonomous/`
 
-`data/piloted/` and `data/autonomous/` contain 12 and 18 `flight-.../` folders respectively.
+`data/piloted/` and `data/autonomous/` contain 18 `flight-.../` folders respectively.
 
 ## Data Format
 
@@ -172,10 +172,12 @@ ros2 topic echo sensors/imu
 ```sh
 drone-racing-dataset
 ├── camera_calibration
-│   ├── calibration_results_trackRATM.json - Camera parameters of trackRATM flights in JSON format.
-│   ├── calibration_results_trackRATM.npz - Camera parameters of trackRATM flights in NumPy format.
-│   ├── calibration_results.json - Camera parameters of ellipse and lemniscate flights in JSON format.
-│   ├── calibration_results.npz - Camera parameters of ellipse and lemniscate flights in NumPy format.
+│   ├── calib_a-trackRATM.json - Camera parameters of autonomous trackRATM flights in JSON format.
+│   ├── calib_a-trackRATM.npz - Camera parameters of autonomous trackRATM flights in NumPy format.
+│   ├── calib_ap-ellipse-lemniscate.json - Camera parameters of ellipse and lemniscate flights in JSON format.
+│   ├── calib_ap-ellipse-lemniscate.npz - Camera parameters of ellipse and lemniscate flights in NumPy format.
+│   ├── calib_p-trackRATM.json - Camera parameters of piloted trackRATM flights in JSON format.
+│   ├── calib_p-trackRATM.npz - Camera parameters of piloted trackRATM flights in NumPy format.
 │   └── drone_to_camera.json - Drone to camera in JSON format. Translation was measured by MoCap, rotation is an estimation, and includes the FLU to RDF conversion.
 ├── ...
 └── scripts
@@ -195,4 +197,4 @@ drone-racing-dataset
 
 ## License
 
-<p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/">The dataset released in <a property="dct:title" rel="cc:attributionURL" href="https://github.com/tii-racing/drone-racing-dataset">Race Against the Machine A Fully-annotated, Open-design Dataset of Autonomous and Piloted High-speed Flight</a> by <span property="cc:attributionName">TII Racing Jetsetters</span> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p>
+<p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/">The dataset released in <a property="dct:title" rel="cc:attributionURL" href="https://github.com/tii-racing/drone-racing-dataset">Race Against the Machine A Fully-annotated, Open-design Dataset of Autonomous and Piloted High-speed Flight</a> by <span property="cc:attributionName">TII Racing</span> is licensed under <a href="http://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"></a></p>
