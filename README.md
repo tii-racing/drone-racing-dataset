@@ -27,6 +27,26 @@ If you use this repo, you can cite [the companion paper](https://ieeexplore.ieee
 }
 ```
 
+## Dataset Extension
+
+### 16/10/2025 Update
+
+The [v3.0.0 release](https://github.com/tii-racing/drone-racing-dataset/releases/tag/v3.0.0) introduces six new piloted flights on the **trackRATM**, flown by world-class FPV pilot **MCK**.
+
+These flights are released as part of the data accompanying our [new paper](https://arxiv.org/abs/2510.13644).
+
+```bibtex
+@misc{bosello2025ownprolevelautonomousdrone,
+      title={On Your Own: Pro-level Autonomous Drone Racing in Uninstrumented Arenas}, 
+      author={Michael Bosello and Flavio Pinzarrone and Sara Kiade and Davide Aguiari and Yvo Keuter and Aaesha AlShehhi and Gyordan Caminati and Kei Long Wong and Ka Seng Chou and Junaid Halepota and Fares Alneyadi and Jacopo Panerati and Giovanni Pau},
+      year={2025},
+      eprint={2510.13644},
+      archivePrefix={arXiv},
+      primaryClass={cs.RO},
+      url={https://arxiv.org/abs/2510.13644}, 
+}
+```
+
 ## Installation/Download
 
 Tested on October 2023 with **Ubuntu 20.04 LTS** (Python 3.8), **macOS 14** (Python 3.11), **Windows 11** (Python 3.9).
